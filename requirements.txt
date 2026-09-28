@@ -1,0 +1,13 @@
+# ADS 6703 Natural Language Processing: one environment for the whole course
+# Python 3.11 or 3.12 recommended
+jupyterlab>=4.2
+ipywidgets>=8.1
+pandas>=2.2
+numpy>=1.26
+matplotlib>=3.8
+scikit-learn>=1.5
+nltk>=3.9
+gensim>=4.3.3
+torch>=2.3
+transformers>=4.44
+sentencepiece>=0.2
