@@ -17,7 +17,7 @@
     <a href="index.html#map">Course map</a>
     <a href="setup.html" aria-current="page">Laptop setup</a>
     <a href="index.html#assessment">Assessment</a>
-    <a href="workshops/w01/index.html">Workshop 1</a>
+    <a href="workshops/w01/index.html">This week: W1</a>
   </nav>
   <button class="theme-toggle no-print" type="button" aria-label="Switch to dark mode" title="Switch to dark mode">
     <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
@@ -77,7 +77,12 @@ uv venv --python 3.12
 uv pip install -r requirements.txt
 </code></pre>
 <p>The first command downloads Python 3.12 if you don't have it and creates a <code>.venv</code> folder inside <code>ADS6703</code>. The second installs the libraries into it. You never need to "activate" anything, because the <code>uv run</code> command in step 4 finds <code>.venv</code> automatically.</p>
+<div class="callout warn">
+<span class="label">If your prompt starts with a name in brackets, such as <code>(base)</code></span>
+<p>Another Python environment is active (usually Anaconda's), and uv would install into it instead of <code>.venv</code>. Run <code>conda deactivate</code> (or <code>deactivate</code> for other environments) until the brackets disappear, then run the commands above. Do the same before <code>uv run jupyter lab</code> each week.</p>
+</div>
 <p class="muted">This installs JupyterLab, pandas, scikit-learn, NLTK, gensim, PyTorch (CPU only) and Hugging Face <code>transformers</code>, about 1 GB in total. One install covers all 12 workshops.</p>
+<p><strong>On an Intel Mac</strong> (Apple menu → About This Mac shows an Intel processor rather than Apple M1, M2, …), the install stops with a <code>torch</code> error and installs nothing. Follow <a href="#troubleshooting">Torch install fails on an Intel Mac</a> below instead.</p>
 <h2>4. Check that everything works</h2>
 <p>From inside your <code>ADS6703</code> folder, start JupyterLab:</p>
 <pre><code>uv run jupyter lab
@@ -122,7 +127,7 @@ uv run jupyter lab
 </div>
 <h2>Before Unit 3 (not needed yet)</h2>
 <p>From Workshop 9 onwards we use small open transformer models (DistilBERT, GPT-2, T5-small), which together come to about 1.5 GB. You will get a one-cell download notebook to run at home the week before. The models run offline, on your laptop's CPU, with no API key.</p>
-<h2>Troubleshooting</h2>
+<h2 id="troubleshooting">Troubleshooting</h2>
 <details>
 <summary><code>git</code> or <code>uv</code> "not found" or "not recognized"</summary>
 <p>The terminal you are using was opened before the tool was installed. Close it, open a new one, and try again. On Windows, if <code>git</code> is still not found, reinstall it from git-scm.com with the default options.</p>
@@ -144,8 +149,8 @@ uv run jupyter lab
 <p>The notebook must be inside a workshop folder such as <code>ADS6703/w01/</code>, and the data must be in <code>ADS6703/data/</code>. If you downloaded files by hand, check that the names have not been changed; for example, some browsers rename downloads to <code>reviews.csv (1).gz</code>.</p>
 </details>
 <details>
-<summary>Torch install fails on an older Intel Mac</summary>
-<p>You can skip this problem until Unit 3. Remove the <code>torch</code>, <code>transformers</code> and <code>sentencepiece</code> lines from <code>requirements.txt</code>, run <code>uv pip install -r requirements.txt</code> again, and talk to me before Workshop 9. (Editing <code>requirements.txt</code> is the one exception to "don't change published files". If <code>git pull</code> later complains about it, run <code>git checkout requirements.txt</code> and pull again.)</p>
+<summary>Torch install fails on an Intel Mac</summary>
+<p>PyTorch no longer supports Intel Macs, so the whole install stops. You can skip this problem until Unit 3. Remove the <code>torch</code>, <code>transformers</code> and <code>sentencepiece</code> lines from <code>requirements.txt</code>, run <code>uv pip install -r requirements.txt</code> again, and talk to me before Workshop 9. (Editing <code>requirements.txt</code> is the one exception to "don't change published files". If <code>git pull</code> later complains about it, run <code>git checkout requirements.txt</code> and pull again.)</p>
 </details>
 <details>
 <summary>I'd rather keep using Anaconda</summary>

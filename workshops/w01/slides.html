@@ -402,17 +402,18 @@
 <h2>Two ways a pattern can be wrong</h2>
 <div class="cols">
 <div class="box hot">
-<h3>False positive: over-matching</h3>
+<h3>False positive (FP): a wrong match</h3>
 <p><code class="rx">loud</code> also matches "c<mark class="bad">loud</mark>y water"</p>
 <p class="small">Fix it by making the pattern <strong>stricter</strong>, which raises <strong>precision</strong>.</p>
 </div>
 <div class="box accent">
-<h3>False negative: under-matching</h3>
+<h3>False negative (FN): a miss</h3>
 <p><code class="rx">[A-Z]{2,}\d{3,}</code> misses "K200"</p>
 <p class="small">Fix it by making the pattern <strong>looser</strong>, which raises <strong>recall</strong>.</p>
 </div>
 </div>
-<p style="margin-top:0.6em">\[ \text{Precision} = \frac{TP}{TP+FP} \qquad \text{Recall} = \frac{TP}{TP+FN} \qquad F_1 = \frac{2PR}{P+R} \]</p>
+<p class="small" style="margin-top:0.6em">A correct match is a <strong>true positive (TP)</strong>.</p>
+<p>\[ \text{Precision} = \frac{TP}{TP+FP} \qquad \text{Recall} = \frac{TP}{TP+FN} \qquad F_1 = \frac{2PR}{P+R} \]</p>
 </section>
 
 <section>
