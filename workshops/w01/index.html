@@ -47,11 +47,11 @@
 
 <!-- The header (title, lede, buttons, outcomes) comes from workshop.yml. -->
 
-<h2 id="pre-read">Before class: pre-read (about 60 min)</h2>
+<h2 id="pre-read">Before class: pre-read (about 85 min)</h2>
 <h3>1. Checklist</h3>
 <ul class="checklist">
 <li>Laptop set up and <code>W00-setup-check.ipynb</code> showing all ✅ (<a href="../../setup.html">setup guide</a>)</li>
-<li><code>git pull</code> run in your <code>ADS6703</code> folder, so the three Workshop 1 notebooks are in <code>ADS6703/w01/</code></li>
+<li><code>git pull</code> run in your <code>ADS6703</code> folder, so the four Workshop 1 notebooks are in <code>ADS6703/w01/</code></li>
 </ul>
 <h3>2. Why text, why managers?</h3>
 <p>Most of the data a company creates is unstructured: product reviews, support tickets, call transcripts, emails, contracts, social posts. None of it fits into a spreadsheet as it stands, and so most of it goes unread. <strong>Natural Language Processing (NLP)</strong> is the set of methods that turn this text into something you can count, compare, search and predict.</p>
@@ -102,7 +102,9 @@
 </ul>
 <h3>6. Practise: regex basics (about 25 min)</h3>
 <p>Open <code>ADS6703/w01/W01-0-regex-basics.ipynb</code> and work through it. It covers the regex syntax the in-class notebooks assume, one idea at a time, each with a short self-checking exercise: character classes, quantifiers, anchors and word boundaries, groups, substitution and lookarounds.</p>
-<h3>7. Try (optional, 10 min)</h3>
+<h3>7. Practise: pandas basics (about 25 min)</h3>
+<p>Open <code>ADS6703/w01/W01-0b-pandas-basics.ipynb</code>. It covers the pandas the in-class notebooks use, on a table of eight reviews: selecting columns, filtering rows with True/False masks, <code>.loc</code>, counting, the <code>.str</code> methods that run a regex over a whole column, <code>.apply</code>, <code>groupby</code>, and loading the real data. If you already use pandas, skim the cheat sheet at the end and do the five exercises.</p>
+<h3>8. Try (optional, 10 min)</h3>
 <p>Open <a href="https://regex101.com/">regex101.com</a>, set the flavour to <strong>Python</strong>, and paste in this text:</p>
 <pre><code>Fits my Whirlpool WDT970SAHZ0. Paid $24.99, Sears wanted $80!
 Stopped working after 3 months. Call 98229 67803 or mail a.rao@gmail.com.
@@ -130,6 +132,11 @@ Stopped working after 3 months. Call 98229 67803 or mail a.rao@gmail.com.
   <a class="card" href="notebooks/W01-0-regex-basics.ipynb" download>
     <p class="kicker">Notebook · before class</p>
     <h3>W01-0 · Regex basics</h3>
+    <p class="muted">Self-paced, about 25 minutes. Do it before Thursday.</p>
+  </a>
+  <a class="card" href="notebooks/W01-0b-pandas-basics.ipynb" download>
+    <p class="kicker">Notebook · before class</p>
+    <h3>W01-0b · Pandas basics</h3>
     <p class="muted">Self-paced, about 25 minutes. Do it before Thursday.</p>
   </a>
   <a class="card" href="notebooks/W01-A-regex-on-reviews.ipynb" download>
