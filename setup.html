@@ -96,7 +96,7 @@ uv run jupyter lab
 </code></pre>
 <p><code>git pull</code> brings in that week's notebooks and, after class, the solutions to the previous week's. Work in the notebooks where they are. Published files never change afterwards, so pulling will not clash with your work.</p>
 <h2 id="data">The course data</h2>
-<p>The datasets are already in <code>ADS6703/data/</code> if you cloned the repo. If you need them separately, save these files into <code>ADS6703/data/</code>. <strong>Do not unzip the .gz files</strong>, because pandas reads them directly.</p>
+<p>The datasets are already in <code>ADS6703/data/</code> if you cloned the repo. If you need them separately, save these files into <code>ADS6703/data/</code>. <strong>Do not unzip the .gz files in that folder</strong>, because pandas reads them directly. To browse them in Excel, work on a copy (<a href="#excel">below</a>).</p>
 <div class="table-wrap">
 <table>
 <thead>
@@ -125,6 +125,23 @@ uv run jupyter lab
 </tbody>
 </table>
 </div>
+<h3 id="excel">Looking at the data in Excel</h3>
+<p>Scroll through the data yourself before any code touches it. Excel works well for this, but it needs two extra steps. Work on <strong>copies</strong>, so the files in <code>ADS6703/data/</code> stay exactly as they are.</p>
+<ol>
+<li><strong>Copy</strong> the file from <code>ADS6703/data/</code> to your Desktop.</li>
+<li><strong>Unzip it.</strong> This applies only to the <code>.gz</code> files; <code>support_inbox.csv</code> is ready as it is.<ul>
+<li><strong>Mac:</strong> double-click <code>reviews.csv.gz</code> in Finder. <code>reviews.csv</code> appears next to it.</li>
+<li><strong>Windows:</strong> install <a href="https://www.7-zip.org/">7-Zip</a> (free), then right-click the file → <strong>7-Zip → Extract Here</strong>.</li>
+</ul>
+</li>
+<li><strong>Import it into Excel.</strong> Don't double-click the <code>.csv</code>: Excel would then garble characters such as ₹, ★ and curly quotes. Instead, open a blank workbook and:<ul>
+<li><strong>Windows:</strong> <strong>Data → From Text/CSV</strong> → choose the file → set <strong>File Origin</strong> to <strong>65001: Unicode (UTF-8)</strong> → <strong>Load</strong>.</li>
+<li><strong>Mac:</strong> <strong>File → Import</strong> → <strong>CSV file</strong> → choose the file → in the wizard, set <strong>File origin</strong> to <strong>Unicode (UTF-8)</strong> and keep <strong>Delimited</strong> → tick <strong>Comma</strong> → <strong>Finish</strong>.</li>
+</ul>
+</li>
+<li>To read long reviews, select the <code>text</code> column, click <strong>Wrap Text</strong>, and widen the column. <strong>Data → Filter</strong> adds filter buttons to the headers, for example to show only 1★ reviews.</li>
+</ol>
+<p>You don't need to save anything. If you do, save it outside <code>ADS6703/data/</code>.</p>
 <h2>Before Unit 3 (not needed yet)</h2>
 <p>From Workshop 9 onwards we use small open transformer models (DistilBERT, GPT-2, T5-small), which together come to about 1.5 GB. You will get a one-cell download notebook to run at home the week before. The models run offline, on your laptop's CPU, with no API key.</p>
 <h2 id="troubleshooting">Troubleshooting</h2>
