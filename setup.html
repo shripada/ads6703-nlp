@@ -188,6 +188,17 @@ python -m pip install -r requirements.txt
 <p>From then on, wherever this page says <code>uv run jupyter lab</code>, activate first (<code>source .venv/bin/activate</code> on a Mac, <code>.venv\Scripts\Activate.ps1</code> on Windows) and then run plain <code>jupyter lab</code>. Your prompt should start with <code>(.venv)</code>. If it doesn't, <code>jupyter</code> is either not found or the libraries look missing. Wherever it says <code>uv pip install</code>, use <code>python -m pip install</code> with <code>.venv</code> activated.</p>
 </details>
 <details>
+<summary>I'd rather use Google Colab</summary>
+<p>That works too, with a Google account and nothing installed. The catch is that Colab opens one notebook at a time, without the <code>data/</code> folder next to it, so the notebook first has to fetch the course folder.</p>
+<p><strong>1. Open the notebook.</strong> From Workshop 2 on, every notebook has an <strong>Open in Colab</strong> button near the top. For Workshop 1, go to <a href="https://colab.research.google.com">colab.research.google.com</a>, choose <strong>File → Open notebook → GitHub</strong>, enter <code>shripada/ads6703-nlp</code>, and pick the notebook.</p>
+<p><strong>2. Run the setup cell first.</strong> From Workshop 2 on, it is the code cell right under the button. For Workshop 1, add a new cell at the very top, paste this in and run it:</p>
+<pre><code>!git clone -q https://github.com/shripada/ads6703-nlp.git /content/ADS6703
+%cd /content/ADS6703/w01
+</code></pre>
+<p><strong>3. Choose File → Save a copy in Drive straight away.</strong> Otherwise your work is lost when you close the tab.</p>
+<p>Colab wipes its files when the session ends (after about 90 minutes idle). Your notebook in Drive survives, but the course folder doesn't, so run the setup cell again each time you come back. Some later workshops need a library Colab doesn't have; their notebooks will tell you what to install.</p>
+</details>
+<details>
 <summary>I'd rather keep using Anaconda</summary>
 <p>That's fine if your Anaconda already works. Run <code>conda create -n nlp python=3.12 -y</code>, then <code>conda activate nlp</code>, then <code>pip install -r requirements.txt</code> from your <code>ADS6703</code> folder. Activate <code>nlp</code> and run plain <code>jupyter lab</code> each time. The rest of this page is the same.</p>
 </details>
