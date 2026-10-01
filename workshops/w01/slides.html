@@ -18,27 +18,27 @@
 <p class="muted" style="font-weight:700">ADS 6703 · Natural Language Processing · Workshop 1</p>
 <h1>Text is data</h1>
 <p class="big" style="color:var(--accent)">Regular expressions for information extraction</p>
-<p class="muted">Thursday 1 October 2026 · Sessions 1–2 · Prof. Shripada Hebbar</p>
+<p class="muted">Thursday 1 October 2026 · Sessions 1–3 · Prof. Shripada Hebbar</p>
 </section>
 
 <section>
 <h2>Today</h2>
 <table>
-  <tr><td><code>2:30</code></td><td>Hook: 30,000 reviews, and what's inside them</td></tr>
-  <tr><td><code>2:40</code></td><td>Regex, worked by hand</td></tr>
-  <tr><td><code>3:10</code></td><td>Guided lab <strong>W01-A</strong>: regex on real reviews</td></tr>
-  <tr><td><code>3:40</code></td><td>Recap</td></tr>
-  <tr style="background:var(--hot-bg)"><td><code>3:45</code></td><td><strong>Break</strong></td></tr>
-  <tr><td><code>4:00</code></td><td>Challenge <strong>W01-B</strong> in pairs: the support inbox</td></tr>
-  <tr><td><code>4:45</code></td><td>Share-out and ethics</td></tr>
-  <tr><td><code>5:00</code></td><td>Short check</td></tr>
+  <tr><td><code>2:00</code></td><td>Hook: 30,000 reviews, and what's inside them</td></tr>
+  <tr><td><code>2:10</code></td><td>Regex, worked by hand</td></tr>
+  <tr><td><code>2:40</code></td><td>Guided lab <strong>W01-A</strong>: regex on real reviews</td></tr>
+  <tr><td><code>3:20</code></td><td>Recap</td></tr>
+  <tr style="background:var(--hot-bg)"><td><code>3:25</code></td><td><strong>Break</strong></td></tr>
+  <tr><td><code>3:40</code></td><td>Challenge <strong>W01-B</strong> in pairs: the support inbox</td></tr>
+  <tr><td><code>4:30</code></td><td>Share-out and ethics</td></tr>
+  <tr><td><code>4:45</code></td><td>Short check</td></tr>
 </table>
 
 <!-- ============================================================ HOOK -->
 </section>
 
 <section class="divider">
-<span class="clock">2:30 · 10 min</span>
+<span class="clock">2:00 · 10 min</span>
 <p class="kicker">Data you work on</p>
 <h2>You run <span style="color:var(--accent)">Appliances &amp; Parts</span>.<br>30,000 reviews arrived this quarter.</h2>
 <p class="big">What's inside them?</p>
@@ -136,12 +136,12 @@
 <tr>
 <td>Quiz</td>
 <td>10%</td>
-<td>W11</td>
+<td>W9</td>
 </tr>
 <tr>
 <td>Mini project (teams of 3–4, topic by lottery)</td>
 <td>10%</td>
-<td>W7 → W12</td>
+<td>W7 → W10</td>
 </tr>
 <tr>
 <td>End-term, closed book</td>
@@ -155,7 +155,7 @@
 </section>
 
 <section class="divider">
-<span class="clock">2:40 · 30 min</span>
+<span class="clock">2:10 · 30 min</span>
 <p class="kicker">Concept + hand calculation</p>
 <h2>Regular expressions</h2>
 <p class="big">A small language for describing patterns in text</p>
@@ -473,7 +473,7 @@ reviews[&quot;text&quot;].str.extract(r&quot;after (\d+) (month|year)&quot;)  # 
 </section>
 
 <section class="divider">
-<span class="clock">3:10 · 30 min</span>
+<span class="clock">2:40 · 40 min</span>
 <p class="kicker">Guided lab</p>
 <h2>W01-A · Regex on real reviews</h2>
 <p>Open <code>ADS6703/w01/W01-A-regex-on-reviews.ipynb</code></p>
@@ -486,7 +486,7 @@ reviews[&quot;text&quot;].str.extract(r&quot;after (\d+) (month|year)&quot;)  # 
 </section>
 
 <section>
-<span class="clock">3:40 · 5 min</span>
+<span class="clock">3:20 · 5 min</span>
 <h2>Recap</h2>
 <ul>
 <li>With 5 functions you can extract, flag, split and clean 30,000 reviews in seconds</li>
@@ -497,22 +497,22 @@ reviews[&quot;text&quot;].str.extract(r&quot;after (\d+) (month|year)&quot;)  # 
 </section>
 
 <section class="divider break-slide">
-<span class="clock">3:45 → 4:00</span>
+<span class="clock">3:25 → 3:40</span>
 <p class="kicker" style="color:var(--hot)">Break</p>
-<h2>Back at 4:00</h2>
+<h2>Back at 3:40</h2>
 <p class="big">Before you go: find your <strong>partner</strong> for the challenge.</p>
 <!-- ============================================================ CHALLENGE -->
 </section>
 
 <section class="divider">
-<span class="clock">4:00 · 45 min</span>
+<span class="clock">3:40 · 50 min</span>
 <p class="kicker">Challenge lab, in pairs</p>
 <h2>W01-B · The support inbox</h2>
 <p><strong>GharTech Appliances</strong> (fictional) wants to send 300 support tickets to an outside analytics vendor.<br>Legal says: <em>no personal data leaves the building.</em></p>
 </section>
 
 <section>
-<h2>Your 45 minutes</h2>
+<h2>Your 50 minutes</h2>
 <table>
 <thead>
 <tr>
@@ -564,7 +564,7 @@ reviews[&quot;text&quot;].str.extract(r&quot;after (\d+) (month|year)&quot;)  # 
 </section>
 
 <section class="divider">
-<span class="clock">4:45 · 15 min</span>
+<span class="clock">4:30 · 15 min</span>
 <p class="kicker">Share-out</p>
 <h2>Scoreboard</h2>
 <ul>
@@ -613,7 +613,7 @@ reviews[&quot;text&quot;].str.extract(r&quot;after (\d+) (month|year)&quot;)  # 
 </section>
 
 <section class="divider">
-<span class="clock">5:00 · 15 min</span>
+<span class="clock">4:45 · 15 min</span>
 <p class="kicker">Short check</p>
 <h2>5 questions · individual · on paper</h2>
 <p>Write your name and roll number at the top.</p>
