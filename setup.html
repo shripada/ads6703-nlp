@@ -170,6 +170,24 @@ uv run jupyter lab
 <p>PyTorch no longer supports Intel Macs, so the whole install stops. You can skip this problem until Unit 3. Remove the <code>torch</code>, <code>transformers</code> and <code>sentencepiece</code> lines from <code>requirements.txt</code>, run <code>uv pip install -r requirements.txt</code> again, and talk to me before Workshop 9. (Editing <code>requirements.txt</code> is the one exception to "don't change published files". If <code>git pull</code> later complains about it, run <code>git checkout requirements.txt</code> and pull again.)</p>
 </details>
 <details>
+<summary>I'd rather use pip instead of uv</summary>
+<p>That works, but you have to install Python yourself and activate the environment every time. First install <strong>Python 3.12</strong> from <a href="https://www.python.org/downloads/">python.org</a>. On Windows, tick <strong>Add python.exe to PATH</strong> in the installer. On a Mac, don't use the <code>python3</code> that came with the Mac (it is 3.9, which is too old).</p>
+<p>Then, instead of step 3, run these from your <code>ADS6703</code> folder. On a <strong>Mac</strong>:</p>
+<pre><code>python3.12 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+</code></pre>
+<p>On <strong>Windows</strong> (PowerShell):</p>
+<pre><code>py -3.12 -m venv .venv
+.venv\Scripts\Activate.ps1
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+</code></pre>
+<p>If Windows says <em>running scripts is disabled</em>, run <code>Set-ExecutionPolicy -Scope CurrentUser RemoteSigned</code> once, then try again.</p>
+<p>From then on, wherever this page says <code>uv run jupyter lab</code>, activate first (<code>source .venv/bin/activate</code> on a Mac, <code>.venv\Scripts\Activate.ps1</code> on Windows) and then run plain <code>jupyter lab</code>. Your prompt should start with <code>(.venv)</code>. If it doesn't, <code>jupyter</code> is either not found or the libraries look missing. Wherever it says <code>uv pip install</code>, use <code>python -m pip install</code> with <code>.venv</code> activated.</p>
+</details>
+<details>
 <summary>I'd rather keep using Anaconda</summary>
 <p>That's fine if your Anaconda already works. Run <code>conda create -n nlp python=3.12 -y</code>, then <code>conda activate nlp</code>, then <code>pip install -r requirements.txt</code> from your <code>ADS6703</code> folder. Activate <code>nlp</code> and run plain <code>jupyter lab</code> each time. The rest of this page is the same.</p>
 </details>
