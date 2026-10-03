@@ -36,6 +36,7 @@ ADS6703/
 ├── W00-setup-check.ipynb  checks your setup
 ├── data/                  the course datasets
 ├── w01/                   Workshop 1: Text is data
+├── w02/                   Workshop 2: From words to search
 └── …                      more folders appear as the term goes on
 ```
 
