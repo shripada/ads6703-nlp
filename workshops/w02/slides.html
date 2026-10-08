@@ -34,7 +34,7 @@
   <tr><td><code>3:20</code></td><td>Recap</td></tr>
   <tr style="background:var(--hot-bg)"><td><code>3:25</code></td><td><strong>Break</strong></td></tr>
   <tr><td><code>3:40</code></td><td>Challenge <strong>W02-B</strong>: a Boolean search engine</td></tr>
-  <tr><td><code>4:30</code></td><td>Share-out</td></tr>
+  <tr><td><code>4:30</code></td><td>Class discussion</td></tr>
   <tr><td><code>4:45</code></td><td>Short check</td></tr>
 </table>
 
@@ -589,7 +589,7 @@ filter <strong>8,307</strong> · great <strong>6,531</strong> · water <strong>3
 <tr>
 <th>Order</th>
 <th>Candidates left after each step</th>
-<th>Checked</th>
+<th>Candidates looked up</th>
 </tr>
 </thead>
 <tbody>
@@ -605,9 +605,10 @@ filter <strong>8,307</strong> · great <strong>6,531</strong> · water <strong>3
 </tr>
 </tbody>
 </table>
-<p class="fragment">Same 41 answers, six times less work. The index already stores every term's document frequency, so this plan costs nothing to make.</p>
+<p class="fragment small">The first number is the first term's own list; each arrow is one more AND. Each candidate is looked up in the next term's list, so the work is the sum of every number except the last: 885 + 355 + 74 = 1,314. We got these counts by running each order on the real index; you can't work them out from the frequencies alone.</p>
+<p class="fragment">Same 41 answers, six times less work. What you <em>can</em> say in advance: an AND never returns more than its shortest list, so starting with <em>leak</em> (885) means no step handles more than 885. The index already stores every term's document frequency, so this plan costs nothing to make.</p>
 <aside class="notes">
-<p>For (a OR b) AND (c OR d): estimate each OR by the sum of the two frequencies (an upper bound), then start with the smaller OR. That's IIR 1.3, and it's in the practice problems.</p>
+<p>For (a OR b) AND (c OR d): estimate each OR by the sum of the two frequencies (an upper bound), then start with the smaller OR. That's IIR 1.3, and it's in the practice problems. If someone asks why this doesn't match the merge slide's len(p1) + len(p2): "looked up" assumes each candidate is checked directly in the next list (a set lookup, or skipping ahead in a sorted list). With a plain merge that walks both lists, the long lists' lengths count too, and the two orders cost about 21,000 and 20,000 steps. Shortest first is still never worse, because every intermediate result stays small, but the "six times" is for lookups.</p>
 </aside>
 </section>
 
@@ -782,14 +783,14 @@ for doc_id, terms in enumerate(doc_terms):
 </tr>
 </tbody>
 </table>
-<p class="small">Every task checks itself against a brute-force scan of all 30,000 reviews. Bring your answers to the four share-out questions at the end of the notebook.</p>
-<!-- ============================================================ SHARE-OUT -->
+<p class="small">Every task checks itself against a brute-force scan of all 30,000 reviews. Bring your answers to the four discussion questions at the end of the notebook.</p>
+<!-- ============================================================ CLASS DISCUSSION -->
 </section>
 
 <section class="divider">
 <span class="clock">4:30 · 15 min</span>
-<p class="kicker">Share-out</p>
-<h2>Feast or famine</h2>
+<p class="kicker">Class discussion</p>
+<h2>Too many results, or none</h2>
 <table class="small">
 <thead>
 <tr>
@@ -817,7 +818,7 @@ for doc_id, terms in enumerate(doc_terms):
 </tbody>
 </table>
 <aside class="notes">
-<p>Ask: which of the 355 should the manager read first? Boolean search returns a set, not a ranking. Take answers to the four share-out questions in the notebook. On Q4 (scale): the full scan grows with the collection; the index lookup grows with the postings lengths, and the planner keeps those short.</p>
+<p>Ask: which of the 355 should the manager read first? Boolean search returns a set, not a ranking. Take answers to the four discussion questions in the notebook. On Q4 (scale): the full scan grows with the collection; the index lookup grows with the postings lengths, and the planner keeps those short.</p>
 </aside>
 </section>
 
