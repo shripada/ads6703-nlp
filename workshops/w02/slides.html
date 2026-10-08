@@ -33,7 +33,7 @@
   <tr><td><code>2:40</code></td><td>Guided lab <strong>W02-A</strong>: from text to terms</td></tr>
   <tr><td><code>3:20</code></td><td>Recap</td></tr>
   <tr style="background:var(--hot-bg)"><td><code>3:25</code></td><td><strong>Break</strong></td></tr>
-  <tr><td><code>3:40</code></td><td>Challenge <strong>W02-B</strong> in pairs: a Boolean search engine</td></tr>
+  <tr><td><code>3:40</code></td><td>Challenge <strong>W02-B</strong>: a Boolean search engine</td></tr>
   <tr><td><code>4:30</code></td><td>Share-out</td></tr>
   <tr><td><code>4:45</code></td><td>Short check</td></tr>
 </table>
@@ -49,8 +49,8 @@
 </section>
 
 <section>
-<h2>In pairs, 3 minutes: you are the search box</h2>
-<p>The customer types <strong>leak</strong>. Which of these reviews should come back?</p>
+<h2>Search problem!</h2>
+<p>A search box doesn't read questions; it matches words. <em>"Do these water filters leak?"</em> becomes <strong>water filter leak</strong>, and since every review below is about a water filter, the word that decides is <strong>leak</strong>. 3 minutes: which of these reviews should come back?</p>
 <div class="cols">
 <div>
 <ol type="1">
@@ -68,12 +68,12 @@
 </div>
 </div>
 <aside class="notes">
-<p>Let pairs argue for 3 minutes, then take a vote on each. The point is that "should it match" has two layers: does the <em>word</em> match (1, 4, 6 yes, 3 no, 5 no), and is the <em>review</em> a leak complaint (1, 4 yes; 2, 3, 6 no; 5 yes but no shared word). Today we fix the first layer. The second needs the later workshops.</p>
+<p>First say the bridge out loud: the customer asked a question, but the search box only sees the words in it. In a Boolean engine, turning a question into keywords is the customer's job, and it stays that way until the later workshops. Then give everyone 3 minutes, then take a vote on each. The point is that "should it match" has two layers: does the <em>word</em> match (1, 4, 6 yes, 3 no, 5 no), and is the <em>review</em> a leak complaint (1, 4 yes; 2, 3, 6 no; 5 yes but no shared word). Today we fix the first layer. The second needs the later workshops.</p>
 </aside>
 </section>
 
 <section>
-<h2>What Ctrl-F actually does on 30,000 reviews</h2>
+<h2>Different approaches of search</h2>
 <table class="small">
 <thead>
 <tr>
@@ -94,13 +94,16 @@
 <td>misses <em>Leaks</em>, <em>leaking</em>, <em>leaked</em></td>
 </tr>
 <tr class="fragment">
-<td>every form of <em>leak</em></td>
+<td>every form of <em>leak</em>: <em>leak</em>, <em>leaks</em>, <em>leaked</em>, <em>leaking</em>, any case</td>
 <td>885</td>
 <td>but 408 of them say <em>no leaks</em>, <em>won't leak</em>, …</td>
 </tr>
 </tbody>
 </table>
-<p class="fragment big">A string is not a word, and a word is not a meaning.</p>
+<p class="fragment"><strong>Today we fix the first two rows:</strong> decide what counts as a word, and which words count as the same. The third row, telling <em>"it leaks"</em> from <em>"it doesn't leak"</em>, needs the later workshops.</p>
+<aside class="notes">
+<p>"Every form" means every word a stemmer reduces to <em>leak</em>: in these reviews that is exactly leak, leaks, leaked and leaking. Stemming is how we get there; it comes later today. <em>Leakage</em> and <em>leaky</em> are not included: the Porter stemmer turns them into <em>leakag</em> and <em>leaki</em>.</p>
+</aside>
 </section>
 
 <section>
@@ -113,6 +116,7 @@
   <div>Answers<small>leak AND NOT coffee<br><strong>query</strong></small></div>
 </div>
 
+<p class="small">A <strong>token</strong> is a word exactly as it appears in the text: <em>leaked</em> and <em>leaking</em> are two different tokens. A <strong>term</strong> is what is left after normalising, the form the index stores and the query looks up: both become the term <em>leak</em>.</p>
 <p>First half: <strong>tokens and terms</strong> (W02-A). Second half: <strong>the index and the queries</strong> (W02-B).</p>
 <!-- ============================================================ CONCEPT -->
 </section>
@@ -125,7 +129,8 @@
 </section>
 
 <section>
-<h2>Tokenisation is a design choice</h2>
+<h2>The computer sees characters, not words</h2>
+<p>To count or match words, we first have to decide where one word ends and the next begins. That is <strong>tokenisation</strong>, and it is a design choice:</p>
 <p class="small"><code>Don't buy it! The filter (model UKF8001) cost $24.99 at Lowe's, and it leaked after 2-3 weeks...</code></p>
 <table class="small">
 <thead>
@@ -169,11 +174,15 @@
 </tr>
 </tbody>
 </table>
-<p class="fragment small">No tokeniser is right for everything. For <strong>search</strong> we want lower-case words and numbers, no punctuation, and contractions kept whole. Chinese and Japanese don't put spaces between words at all, which makes tokenising them a harder problem.</p>
+<p class="fragment small">No tokeniser is right for everything. For <strong>search</strong> we want lower-case words and numbers, no punctuation, and contractions (two words shortened into one, like <em>don't</em> = <em>do not</em>) kept whole, so <em>don't</em> stays one token instead of <em>don</em> · <em>t</em>.</p>
+<aside class="notes">
+<p>Chinese and Japanese don't put spaces between words at all, which makes tokenising them a harder problem.</p>
+</aside>
 </section>
 
 <section>
 <h2>Tokens and types</h2>
+<p class="small">How many different words do our reviews use? That number is the size of the vocabulary a search engine has to store.</p>
 <div class="cols">
 <div>
 <p>A <strong>token</strong> is one occurrence of a word.<br>
@@ -280,6 +289,7 @@ The <strong>vocabulary</strong> is the set of types.</p>
 
 <section>
 <h2>Normalisation: which tokens count as the same?</h2>
+<p class="small">Back to our three searches: the exact word <code>leak</code> found <strong>314</strong> reviews, but every form of <em>leak</em> finds <strong>885</strong>. <em>Leaks</em>, <em>leaking</em> and <em>leaked</em> are different tokens, and the customer wants all of them.</p>
 <table>
 <thead>
 <tr>
@@ -385,7 +395,7 @@ The <strong>vocabulary</strong> is the set of types.</p>
 <p class="small">Search <em>leak</em> and miss <em>leakage</em>. <strong>Recall ↓</strong></p>
 </div>
 </div>
-<p class="small" style="margin-top:0.6em">A <strong>lemmatiser</strong> (WordNet) avoids both, but only if told the part of speech: as a noun, <em>was</em> → <em>wa</em>.</p>
+<p class="small" style="margin-top:0.6em"><strong>So why lemmatise?</strong> A <strong>lemmatiser</strong> (WordNet) looks words up in a dictionary instead of chopping endings: <em>ran → run</em>, <em>mice → mouse</em>, and <em>generic</em> stays <em>generic</em>. It never merges unrelated words, but it won't merge <em>leakage</em> with <em>leak</em> either, and it needs the part of speech: as a noun, <em>was</em> → <em>wa</em>.</p>
 </section>
 
 <section>
@@ -397,6 +407,16 @@ The <strong>vocabulary</strong> is the set of types.</p>
 <p>(a) glass (b) fli (c) filter (d) boss (e) ga. The rule <em>s → nothing</em> fires on <code>gas</code> too: rules don't know words.</p>
 <p><em>university / universe → univers</em>: <strong>over</strong>-stemming (different meanings merged). <em>alumnus / alumni</em> staying apart: <strong>under</strong>-stemming.</p>
 </div>
+</section>
+
+<section>
+<h2>Every search so far reads every review, every time</h2>
+<p class="big">Each search scans all 30,000 reviews, character by character.</p>
+<ul>
+<li class="fragment">100 customers typing a query = 100 full scans of the same, unchanged text</li>
+<li class="fragment">The reviews don't change between queries. <strong>Can we do the work once?</strong></li>
+<li class="fragment">Read every review once, write down <strong>which terms it contains</strong>, and answer every query from that record</li>
+</ul>
 </section>
 
 <section>
@@ -680,7 +700,7 @@ for doc_id, terms in enumerate(doc_terms):
 <h2>W02-A · From text to terms</h2>
 <p>Open <code>ADS6703/w02/W02-A-text-to-terms.ipynb</code></p>
 <ol>
-<li>The Ctrl-F problem (5 min)</li>
+<li>Different approaches of search (5 min)</li>
 <li>Tokenisation, <strong>Exercise 1</strong>: a tokeniser for search (10 min)</li>
 <li>Zipf's law (5 min)</li>
 <li>Stop words, <strong>Exercise 2</strong>: keep the negations (5 min)</li>
@@ -704,13 +724,12 @@ for doc_id, terms in enumerate(doc_terms):
 <span class="clock">3:25 → 3:40</span>
 <p class="kicker" style="color:var(--hot)">Break</p>
 <h2>Back at 3:40</h2>
-<p class="big">Before you go: find your <strong>partner</strong> for the challenge.</p>
 <!-- ============================================================ CHALLENGE -->
 </section>
 
 <section class="divider">
 <span class="clock">3:40 · 50 min</span>
-<p class="kicker">Challenge lab, in pairs</p>
+<p class="kicker">Challenge lab</p>
 <h2>W02-B · A Boolean search engine</h2>
 <p>The category team wants a search box over its 30,000 reviews.<br><em>Build the engine behind it.</em></p>
 </section>
