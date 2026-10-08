@@ -91,3 +91,9 @@ html, body, .reveal-viewport { background: #fff; }
 
 /* r`...` in Markdown renders as <code class="rx"> */
 .reveal code.rx { font-size: 1em; color: var(--accent); font-weight: 700; }
+
+/* way back to the workshop page and course home: small, bottom-left, clear of the controls */
+.deck-nav { position: fixed; left: 12px; bottom: 10px; z-index: 40; display: flex; gap: 8px; font-family: var(--font); font-size: 15px; font-weight: 700; }
+.deck-nav a { color: #fff; background: var(--ink); padding: 4px 10px; border-radius: 6px; text-decoration: none; opacity: 0.55; }
+.deck-nav a:hover, .deck-nav a:focus-visible { opacity: 1; }
+@media print { .deck-nav { display: none; } }
