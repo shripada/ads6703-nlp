@@ -399,7 +399,7 @@ The <strong>vocabulary</strong> is the set of types.</p>
 </section>
 
 <section>
-<h2>✏️ On paper, 3 minutes</h2>
+<h2>Exercise: Porter step 1a</h2>
 <p>Apply Porter <strong>step 1a</strong> (the four rules on the previous slide) to:</p>
 <p>(a) <code>glasses</code> &nbsp; (b) <code>flies</code> &nbsp; (c) <code>filters</code> &nbsp; (d) <code>boss</code> &nbsp; (e) <code>gas</code></p>
 <p>Then: is <em>university, universe → univers</em> over- or under-stemming? What about <em>alumnus, alumni</em>?</p>
@@ -564,7 +564,7 @@ leak    →  1 → 2 → 3
 </section>
 
 <section>
-<h2>✏️ On paper, 3 minutes</h2>
+<h2>Exercise: merging postings</h2>
 <p><code>leak → 3, 7, 9, 12, 20</code> &nbsp;·&nbsp; <code>ice → 1, 7, 12, 15, 20, 25</code></p>
 <ol>
 <li><code>leak AND ice</code>: the answer, and the number of comparisons</li>
@@ -680,7 +680,7 @@ filter <strong>8,307</strong> · great <strong>6,531</strong> · water <strong>3
 </section>
 
 <section>
-<h2>From paper to Python</h2>
+<h2>Now in Python</h2>
 <pre><code>re.findall(r&quot;[a-z0-9]+(?:'[a-z]+)?&quot;, text.lower())   # tokenise for search
 set(stopwords.words(&quot;english&quot;))                      # 198 stop words
 PorterStemmer().stem(&quot;leaking&quot;)                      # 'leak'
@@ -742,44 +742,36 @@ for doc_id, terms in enumerate(doc_terms):
 <tr>
 <th>Task</th>
 <th>Build</th>
-<th>Min</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>1</td>
 <td>Incidence matrix: <code>leak AND NOT ice</code> with bit vectors</td>
-<td>8</td>
 </tr>
 <tr>
 <td>2</td>
 <td><code>build_index</code>: the inverted index</td>
-<td>8</td>
 </tr>
 <tr>
 <td>3</td>
 <td><code>intersect</code>: the AND merge</td>
-<td>12</td>
 </tr>
 <tr>
 <td>4</td>
 <td><code>and_not</code></td>
-<td>6</td>
 </tr>
 <tr>
 <td>5</td>
 <td><code>and_query</code>: shortest list first</td>
-<td>6</td>
 </tr>
 <tr>
 <td>6</td>
 <td>The category manager's four questions</td>
-<td>10</td>
 </tr>
 <tr>
 <td>7</td>
 <td><em>Stretch:</em> a positional index and phrase queries</td>
-<td>–</td>
 </tr>
 </tbody>
 </table>
@@ -864,7 +856,7 @@ for doc_id, terms in enumerate(doc_terms):
 <section class="divider">
 <span class="clock">4:45 · 15 min</span>
 <p class="kicker">Short check</p>
-<h2>5 questions · individual · on paper</h2>
+<h2>5 questions</h2>
 </section>
 
 <section>
@@ -904,7 +896,7 @@ for doc_id, terms in enumerate(doc_terms):
 <script>
   Reveal.initialize({
     width: 1280, height: 720, margin: 0.06,
-    hash: true, slideNumber: "c/t", center: false, transition: "none",
+    hash: true, fragmentInURL: false, slideNumber: "c/t", center: false, transition: "none",
     // only \( \) and \[ \] delimiters: "$" appears in prices and regexes
     katex: {
       local: "../../assets/vendor/katex",

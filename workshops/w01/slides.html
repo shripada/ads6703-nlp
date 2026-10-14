@@ -379,7 +379,7 @@
 </section>
 
 <section>
-<h2>✏️ On paper, 4 minutes</h2>
+<h2>Exercise: which numbers match?</h2>
 <p>Which of these does <code class="rx">\b[6-9]\d{9}\b</code> match?</p>
 <div class="cols">
 <div>
@@ -421,7 +421,7 @@
 </section>
 
 <section>
-<h2>✏️ On paper, 3 minutes</h2>
+<h2>Exercise: precision and recall</h2>
 <p>Your "noise complaint" pattern flags <strong>50</strong> reviews. On checking, <strong>40</strong> of them really are noise complaints. The dataset contains <strong>80</strong> noise complaints in total.</p>
 <p>Precision? Recall? F1?</p>
 <div class="box accent fragment">
@@ -462,7 +462,7 @@
 </section>
 
 <section>
-<h2>From paper to Python</h2>
+<h2>Now in Python</h2>
 <pre><code>import re
 re.findall(r&quot;\$\d+(?:\.\d\d)?&quot;, text)        # list of matches
 re.search(r&quot;after (\d+) (month|year)&quot;, text)  # first match + groups
@@ -521,44 +521,36 @@ reviews[&quot;text&quot;].str.extract(r&quot;after (\d+) (month|year)&quot;)  # 
 <tr>
 <th>Task</th>
 <th>Extract</th>
-<th>Min</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>1</td>
 <td>Order IDs <code>GT-2026-0048213</code></td>
-<td>5</td>
 </tr>
 <tr>
 <td>2</td>
 <td>Emails</td>
-<td>8</td>
 </tr>
 <tr>
 <td>3</td>
 <td>Indian mobile numbers (7 formats!)</td>
-<td>12</td>
 </tr>
 <tr>
 <td>4</td>
 <td>Rupee amounts <code>₹12,499</code> · <code>Rs.12499/-</code></td>
-<td>8</td>
 </tr>
 <tr>
 <td>5</td>
 <td>PIN codes</td>
-<td>3</td>
 </tr>
 <tr>
 <td>6</td>
 <td>Redact before sharing</td>
-<td>6</td>
 </tr>
 <tr>
 <td>7</td>
 <td><em>Stretch:</em> route tickets by keywords</td>
-<td>–</td>
 </tr>
 </tbody>
 </table>
@@ -618,7 +610,7 @@ reviews[&quot;text&quot;].str.extract(r&quot;after (\d+) (month|year)&quot;)  # 
 <section class="divider">
 <span class="clock">4:45 · 15 min</span>
 <p class="kicker">Short check</p>
-<h2>5 questions · individual · on paper</h2>
+<h2>5 questions</h2>
 </section>
 
 <section>
@@ -657,7 +649,7 @@ reviews[&quot;text&quot;].str.extract(r&quot;after (\d+) (month|year)&quot;)  # 
 <script>
   Reveal.initialize({
     width: 1280, height: 720, margin: 0.06,
-    hash: true, slideNumber: "c/t", center: false, transition: "none",
+    hash: true, fragmentInURL: false, slideNumber: "c/t", center: false, transition: "none",
     // only \( \) and \[ \] delimiters: "$" appears in prices and regexes
     katex: {
       local: "../../assets/vendor/katex",
