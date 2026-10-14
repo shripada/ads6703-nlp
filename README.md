@@ -37,6 +37,7 @@ ADS6703/
 ├── data/                  the course datasets
 ├── w01/                   Workshop 1: Text is data
 ├── w02/                   Workshop 2: From words to search
+├── w03/                   Workshop 3: Guess the next word
 └── …                      more folders appear as the term goes on
 ```
 
