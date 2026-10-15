@@ -97,3 +97,10 @@ html, body, .reveal-viewport { background: #fff; }
 .deck-nav a { color: #fff; background: var(--ink); padding: 4px 10px; border-radius: 6px; text-decoration: none; opacity: 0.55; }
 .deck-nav a:hover, .deck-nav a:focus-visible { opacity: 1; }
 @media print { .deck-nav { display: none; } }
+
+/* click-to-reveal answers: ::: details Show answers */
+.reveal details { margin-top: 0.6em; font-size: 0.8em; }
+.reveal details > summary { display: inline-block; cursor: pointer; list-style: none; padding: 0.25em 0.9em; border: 3px solid var(--accent); border-radius: 999px; color: var(--accent); font-weight: 700; }
+.reveal details > summary::-webkit-details-marker { display: none; }
+.reveal details[open] > summary { background: var(--accent); color: #fff; }
+.reveal details > :not(summary) { margin-top: 0.5em; border-left: 8px solid var(--accent); background: var(--accent-bg); border-radius: 0 8px 8px 0; padding: 0.4em 0.7em 0.4em 1.8em; }
