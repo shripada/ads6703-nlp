@@ -657,6 +657,19 @@ def p_next(word, nxt):        # count of the pair ÷ count of the word
 </section>
 
 <section>
+<h2>The same counting, on 8 books</h2>
+<ul>
+<li>About 1 million words from 8 free classic novels: <em>Pride and Prejudice</em>, <em>Sherlock Holmes</em>, <em>Dracula</em>, …</li>
+<li class="fragment">It looks at the last <strong>3</strong> words, not just 1. A phrase it never saw? It drops the first word and tries again</li>
+<li class="fragment">Type a few words and it suggests the next one</li>
+</ul>
+<p class="small muted">Code: <a href="https://github.com/shripada/ngram-autocomplete">github.com/shripada/ngram-autocomplete</a></p>
+<aside class="notes">
+<p>Demo: in the repo folder, uv run streamlit run app.py. Try "I do not" (know, think, mean), then "Sherlock" (holmes, every time), then "the purple elephant": nothing like it in the books, so it falls back to what follows "elephant". Move the n slider to 2 and 1 to show how much worse the guesses get with less context.</p>
+</aside>
+</section>
+
+<section>
 <h2>Where counting pairs stops working</h2>
 <div class="cols">
 <div class="box">
