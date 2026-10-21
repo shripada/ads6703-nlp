@@ -200,7 +200,7 @@
 <tbody>
 <tr>
 <td><strong>Prior</strong></td>
-<td>what you believed before the clue: how common wolves are</td>
+<td>the truth that never changes: how common wolves are</td>
 <td>10/1000</td>
 </tr>
 <tr>
@@ -215,7 +215,7 @@
 </tr>
 <tr>
 <td><strong>Posterior</strong></td>
-<td>your updated belief after the clue: what we wanted</td>
+<td>the chance it really is a wolf when the app shouts "WOLF!"</td>
 <td>9/108 ≈ 8%</td>
 </tr>
 </tbody>
@@ -229,9 +229,18 @@
 <h2>The formula, now that you know it</h2>
 <p>\[ P(\text{wolf} \mid \text{alarm}) = \frac{P(\text{alarm} \mid \text{wolf}) \times P(\text{wolf})}{P(\text{alarm})} \]</p>
 <p class="fragment">posterior = likelihood × prior ÷ evidence</p>
+<aside class="notes">
+<p>The formula is a summary of the counting they already understand.</p>
+</aside>
+</section>
+
+<section>
+<h2>The formula with our numbers</h2>
+<p>\[ \begin{aligned} P(\text{alarm}) &amp;= P(\text{alarm} \mid \text{wolf}) \times P(\text{wolf}) + P(\text{alarm} \mid \neg\text{wolf}) \times P(\neg\text{wolf}) \\ &amp;= \frac{9}{10} \times \frac{10}{1000} + \frac{1}{10} \times \frac{990}{1000} = \frac{9}{1000} + \frac{99}{1000} = \frac{108}{1000} \end{aligned} \]</p>
+<p class="fragment">\[ P(\text{wolf} \mid \text{alarm}) = \frac{9}{10} \times \frac{10}{1000} \div \frac{108}{1000} = \frac{9}{1000} \div \frac{108}{1000} = \frac{9}{108} \]</p>
 <p class="fragment">(0.90 × 0.01) ÷ 0.108 ≈ <strong>0.083 ≈ 8%</strong>: the same 9 out of 108.</p>
 <aside class="notes">
-<p>P(wolf) = 0.01, P(alarm | wolf) = 0.9, P(alarm) = 108/1000 = 0.108. The formula is a summary of the counting they already understand.</p>
+<p>P(alarm | wolf) = 9/10 (9 of the 10 wolves set off the alarm), P(wolf) = 10/1000, P(alarm) = 108/1000. As decimals: 0.9, 0.01, 0.108. P(alarm) is the 9 true alarms plus the 99 false ones.</p>
 </aside>
 </section>
 
