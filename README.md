@@ -38,6 +38,7 @@ ADS6703/
 ├── w01/                   Workshop 1: Text is data
 ├── w02/                   Workshop 2: From words to search
 ├── w03/                   Workshop 3: Guess the next word
+├── w04/                   Workshop 4: Good review or bad review?
 └── …                      more folders appear as the term goes on
 ```
 
