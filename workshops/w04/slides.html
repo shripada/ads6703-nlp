@@ -651,7 +651,6 @@ fan broke
 <h2>From counts to a probability</h2>
 <p>\[ P(\text{word} \mid \text{positive}) = \frac{\text{count of the word in positive reviews}}{\text{all words in positive reviews}} \]</p>
 <p class="fragment big">P(great | positive) = <strong>2/7</strong></p>
-<p class="fragment">The same "count ÷ count" as P(like | i) in W3.</p>
 </section>
 
 <section>
@@ -725,11 +724,11 @@ fan broke
 </section>
 
 <section>
-<h2>The zero problem, again</h2>
+<h2>The zero problem</h2>
 <ul>
-<li class="fragment">Same as W3: <strong>never seen is not impossible</strong></li>
+<li class="fragment"><strong>Never seen is not impossible</strong></li>
 <li class="fragment">One word that never appeared with a label wipes out every other clue</li>
-<li class="fragment">Same fix: <strong>add-one smoothing</strong></li>
+<li class="fragment">The fix: <strong>add-one smoothing</strong></li>
 </ul>
 </section>
 
@@ -869,7 +868,7 @@ for word in review.split():
 <li class="fragment"><strong>Test reviews</strong>: hidden from it, used only to score it <em>(10 in the lab)</em></li>
 </ul>
 <div class="box accent fragment">
-<p>Same as W3: a test with the practice questions proves nothing.</p>
+<p>A test with the practice questions proves nothing.</p>
 </div>
 </section>
 
