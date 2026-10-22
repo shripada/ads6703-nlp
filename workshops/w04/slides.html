@@ -815,18 +815,22 @@ broke and noisy
 
 <section>
 <h2>Now in Python</h2>
-<pre><code>pos_counts = Counter()                     # word -&gt; count, in positive reviews
-for text, label in train:
+<pre><code># 1. Count the words in the positive pile, e.g. great: 3, works: 2
+pos_counts = Counter()
+for text, label in train:                  # train: list of (review, label)
     if label == &quot;pos&quot;:
-        pos_counts.update(text.split())
+        pos_counts.update(text.split())    # add 1 for each word
 
-def p_word(word, counts):                  # add-one smoothing
+# 2. P(word | label) with add-one, e.g. great: (3 + 1) / (9 + 8)
+def p_word(word, counts):
     return (counts[word] + 1) / (sum(counts.values()) + V)
 
-score = prior
+# 3. Score a new review for one label: prior × each word's probability
+score = prior                              # e.g. 4/6 for positive
 for word in review.split():
-    if word in vocab:                      # skip words never seen in training
+    if word in vocab:                      # skip words never seen, like &quot;but&quot;
         score = score * p_word(word, counts)
+# Do this for both labels; the bigger score wins
 </code></pre>
 <!-- ============================================================ GUIDED LAB -->
 </section>
