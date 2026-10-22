@@ -317,30 +317,31 @@
 
 <section>
 <h2>What the classifier learns, per word</h2>
-<table class="small">
+<p class="small">Count each word in the positive pile and in the negative pile, then divide by the size of that pile.</p>
+<table>
 <thead>
 <tr>
 <th>Word</th>
-<th>Shows up in positive reviews</th>
-<th>Shows up in negative reviews</th>
+<th>Positive pile: 8,000 words</th>
+<th>Negative pile: 2,000 words</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><em>great</em></td>
-<td>0.30</td>
-<td>0.03</td>
+<td>2,400 ÷ 8,000 = <strong>0.30</strong></td>
+<td>60 ÷ 2,000 = <strong>0.03</strong></td>
 </tr>
 <tr>
 <td><em>broke</em></td>
-<td>0.01</td>
-<td>0.20</td>
+<td>80 ÷ 8,000 = <strong>0.01</strong></td>
+<td>400 ÷ 2,000 = <strong>0.20</strong></td>
 </tr>
 </tbody>
 </table>
-<p class="fragment">One probability per word, per label: P(word | label). Plus the prior: <strong>80%</strong> of reviews are positive.</p>
+<p class="fragment">The prior is counted the same way: 800 of 1,000 reviews are positive, so <strong>0.8</strong>.</p>
 <aside class="notes">
-<p>That is all the memory it needs: one probability per word per label. Cheap, and it can be learned from little data.</p>
+<p>These are P(word | label): one probability per word, per label. The counts are made up to keep the numbers round; the six tiny reviews later do the same with real counts. The positive pile is bigger because 80% of reviews are positive. That is all the memory the classifier needs, so it is cheap and can learn from little data.</p>
 </aside>
 </section>
 
