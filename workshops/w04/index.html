@@ -101,7 +101,7 @@ the updated one, 8%, is the <strong>posterior</strong>.</p>
 reviews, <em>broke</em> in negative ones. The classifier:</p>
 <ol>
 <li>starts from the prior: how common positive reviews are</li>
-<li>multiplies in one number per word: how often that word appears in positive reviews</li>
+<li>multiplies in one probability per word, P(word | pos): how often that word appears in positive reviews</li>
 <li>does the same for negative, and picks the bigger score</li>
 </ol>
 <p>It pretends each word is a separate clue, which is plainly wrong (<em>not</em> and <em>good</em> belong together). That is the

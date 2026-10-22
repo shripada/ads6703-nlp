@@ -339,9 +339,9 @@
 </tr>
 </tbody>
 </table>
-<p class="fragment">One number per word, per label. Plus the prior: <strong>80%</strong> of reviews are positive.</p>
+<p class="fragment">One probability per word, per label: P(word | label). Plus the prior: <strong>80%</strong> of reviews are positive.</p>
 <aside class="notes">
-<p>That is all the memory it needs: one number per word per label. Cheap, and it can be learned from little data.</p>
+<p>That is all the memory it needs: one probability per word per label. Cheap, and it can be learned from little data.</p>
 </aside>
 </section>
 
@@ -391,11 +391,11 @@
 <tbody>
 <tr>
 <td><strong>It is fast</strong></td>
-<td>To score a review, just multiply one number per word</td>
+<td>To score a review, just multiply one probability per word</td>
 </tr>
 <tr>
 <td><strong>It learns from few reviews</strong></td>
-<td>It needs one number per word. One number for every mix of words would need millions of reviews</td>
+<td>It needs one probability per word, P(word | label). A probability for every mix of words would need millions of reviews</td>
 </tr>
 <tr>
 <td><strong>Only the winner matters</strong></td>
@@ -824,8 +824,8 @@ for word in review.split():
 <section>
 <h2>Recap</h2>
 <ul>
-<li>From 13 reviews, the classifier learns one number per word, per label</li>
-<li class="fragment">A new review: prior × every word's number, for each label; the bigger score wins</li>
+<li>From 13 reviews, the classifier learns one probability per word, per label: P(word | label)</li>
+<li class="fragment">A new review: prior × every word's probability, for each label; the bigger score wins</li>
 <li class="fragment">Without smoothing, one unseen word gives a score of <strong>0</strong></li>
 <li class="fragment"><em>great</em>, <em>works</em> and <em>easy</em> are the strongest positive clues; <em>not</em> and <em>bad</em> the strongest negative ones</li>
 <li class="fragment"><em>a</em> is as negative a clue as <em>broke</em>: the classifier only knows which pile a word turned up in</li>
