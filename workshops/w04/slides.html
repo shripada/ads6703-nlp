@@ -358,7 +358,11 @@
 <p>0.2 × 0.03 × 0.20 = <strong>0.0012</strong></p>
 </div>
 </div>
-<p class="fragment"><em>broke</em> pulls hard towards negative, but positive reviews are common, which pulls back.</p>
+<ul>
+<li class="fragment"><em>great</em> points to positive: 0.30 against 0.03</li>
+<li class="fragment"><em>broke</em> points to negative, even more strongly: 0.20 against 0.01</li>
+<li class="fragment">But 80% of reviews are positive, so positive still wins</li>
+</ul>
 <aside class="notes">
 <p>Each number is prior × P(great | label) × P(broke | label). Words like "price" and "it" are left out here to keep the numbers short.</p>
 </aside>
@@ -375,24 +379,30 @@
 </section>
 
 <section>
-<h2>Wrong assumption, good results</h2>
-<table>
+<h2>Why Naïve Bayes works anyway</h2>
+<p>We pretend each word is a separate clue. That isn't true (<em>not good</em>), but the classifier still does well:</p>
+<table class="small">
+<thead>
+<tr>
+<th>Reason</th>
+<th>What it means</th>
+</tr>
+</thead>
 <tbody>
 <tr>
-<td><strong>Fast and cheap</strong></td>
-<td>just multiply one number per word</td>
+<td><strong>It is fast</strong></td>
+<td>To score a review, just multiply one number per word</td>
 </tr>
 <tr>
-<td><strong>Learns from little</strong></td>
-<td>one number per word, not one per mix of words</td>
+<td><strong>It learns from few reviews</strong></td>
+<td>It needs one number per word. One number for every mix of words would need millions of reviews</td>
 </tr>
 <tr>
-<td><strong>Ranking is enough</strong></td>
-<td>the right label only has to score higher</td>
+<td><strong>Only the winner matters</strong></td>
+<td>The scores can be a bit off. As long as the right label gets the bigger score, the answer is right</td>
 </tr>
 </tbody>
 </table>
-<p class="fragment small">The probabilities can be off, and the winner is still usually right.</p>
 <aside class="notes">
 <p>The third point is the deep one: classifying needs the bigger score, not an exact probability.</p>
 </aside>
