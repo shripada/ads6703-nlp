@@ -67,6 +67,11 @@ html, body, .reveal-viewport { background: #fff; }
 .reveal table { border-collapse: collapse; font-size: 0.8em; width: 100%; }
 .reveal table th, .reveal table td { border: 0; border-bottom: 3px solid #c9cdd1; padding: 0.3em 0.5em; text-align: left; }
 .reveal table th { border-bottom-color: var(--ink); font-weight: 750; }
+/* {.tinted}: a different pale tint on each body row, cycling through four */
+.reveal table.tinted tbody tr:nth-child(4n+1) td { background: var(--accent-bg); }
+.reveal table.tinted tbody tr:nth-child(4n+2) td { background: var(--hot-bg); }
+.reveal table.tinted tbody tr:nth-child(4n+3) td { background: var(--ethics-bg); }
+.reveal table.tinted tbody tr:nth-child(4n+4) td { background: #e6eefb; }
 
 /* pipeline diagram */
 .reveal .pipe { display: flex; gap: 0.35em; align-items: stretch; margin: 0.6em 0; }
