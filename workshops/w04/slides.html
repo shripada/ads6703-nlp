@@ -814,22 +814,22 @@ broke and noisy
 
 <section>
 <h2>Now in Python</h2>
-<pre><code># 1. Count the words in the positive pile, e.g. great: 3, works: 2
+<pre><code><span class="cmt"># 1. Count the words in the positive pile, e.g. great: 3, works: 2</span>
 pos_counts = Counter()
-for text, label in train:                  # train: list of (review, label)
+for text, label in train:                  <span class="cmt"># train: list of (review, label)</span>
     if label == &quot;pos&quot;:
-        pos_counts.update(text.split())    # add 1 for each word
+        pos_counts.update(text.split())    <span class="cmt"># add 1 for each word</span>
 
-# 2. P(word | label) with add-one, e.g. great: (3 + 1) / (9 + 8)
+<span class="cmt"># 2. P(word | label) with add-one, e.g. great: (3 + 1) / (9 + 8)</span>
 def p_word(word, counts):
     return (counts[word] + 1) / (sum(counts.values()) + V)
 
-# 3. Score a new review for one label: prior × each word's probability
-score = prior                              # e.g. 4/6 for positive
+<span class="cmt"># 3. Score a new review for one label: prior × each word's probability</span>
+score = prior                              <span class="cmt"># e.g. 4/6 for positive</span>
 for word in review.split():
-    if word in vocab:                      # skip words never seen, like &quot;but&quot;
+    if word in vocab:                      <span class="cmt"># skip words never seen, like &quot;but&quot;</span>
         score = score * p_word(word, counts)
-# Do this for both labels; the bigger score wins
+<span class="cmt"># Do this for both labels; the bigger score wins</span>
 </code></pre>
 <!-- ============================================================ GUIDED LAB -->
 </section>

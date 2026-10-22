@@ -505,12 +505,12 @@
 
 <section>
 <h2>Now in Python</h2>
-<pre><code>words = [&quot;&lt;s&gt;&quot;] + sentence.split() + [&quot;&lt;/s&gt;&quot;]   # mark start and end
-pair_counts.update(zip(words, words[1:]))       # count every pair
+<pre><code>words = [&quot;&lt;s&gt;&quot;] + sentence.split() + [&quot;&lt;/s&gt;&quot;]   <span class="cmt"># mark start and end</span>
+pair_counts.update(zip(words, words[1:]))       <span class="cmt"># count every pair</span>
 
-next_counts(&quot;i&quot;)                                # {'like': 4, 'drink': 2}
+next_counts(&quot;i&quot;)                                <span class="cmt"># {'like': 4, 'drink': 2}</span>
 
-def p_next(word, nxt):        # count of the pair ÷ count of the word
+def p_next(word, nxt):        <span class="cmt"># count of the pair ÷ count of the word</span>
     after = next_counts(word)
     return after.get(nxt, 0) / sum(after.values())
 </code></pre>

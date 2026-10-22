@@ -681,15 +681,15 @@ filter <strong>8,307</strong> · great <strong>6,531</strong> · water <strong>3
 
 <section>
 <h2>Now in Python</h2>
-<pre><code>re.findall(r&quot;[a-z0-9]+(?:'[a-z]+)?&quot;, text.lower())   # tokenise for search
-set(stopwords.words(&quot;english&quot;))                      # 198 stop words
-PorterStemmer().stem(&quot;leaking&quot;)                      # 'leak'
-WordNetLemmatizer().lemmatize(&quot;ran&quot;, pos=&quot;v&quot;)        # 'run'
+<pre><code>re.findall(r&quot;[a-z0-9]+(?:'[a-z]+)?&quot;, text.lower())   <span class="cmt"># tokenise for search</span>
+set(stopwords.words(&quot;english&quot;))                      <span class="cmt"># 198 stop words</span>
+PorterStemmer().stem(&quot;leaking&quot;)                      <span class="cmt"># 'leak'</span>
+WordNetLemmatizer().lemmatize(&quot;ran&quot;, pos=&quot;v&quot;)        <span class="cmt"># 'run'</span>
 
 index = {}
 for doc_id, terms in enumerate(doc_terms):
     for t in set(terms):
-        index.setdefault(t, []).append(doc_id)       # term -&gt; sorted doc IDs
+        index.setdefault(t, []).append(doc_id)       <span class="cmt"># term -&gt; sorted doc IDs</span>
 </code></pre>
 <p class="small">⚠️ Normalise the <strong>query</strong> with the same function as the documents, or <em>Leaking</em> will look for a term that isn't in the index.</p>
 <!-- ============================================================ GUIDED LAB -->

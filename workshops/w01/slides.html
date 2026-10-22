@@ -464,13 +464,13 @@
 <section>
 <h2>Now in Python</h2>
 <pre><code>import re
-re.findall(r&quot;\$\d+(?:\.\d\d)?&quot;, text)        # list of matches
-re.search(r&quot;after (\d+) (month|year)&quot;, text)  # first match + groups
-re.sub(r&quot;&lt;br\s*/?&gt;&quot;, &quot; &quot;, text)                # replace
+re.findall(r&quot;\$\d+(?:\.\d\d)?&quot;, text)        <span class="cmt"># list of matches</span>
+re.search(r&quot;after (\d+) (month|year)&quot;, text)  <span class="cmt"># first match + groups</span>
+re.sub(r&quot;&lt;br\s*/?&gt;&quot;, &quot; &quot;, text)                <span class="cmt"># replace</span>
 
-# same thing on a whole pandas column
-reviews[&quot;text&quot;].str.contains(r&quot;\bloud\b&quot;, case=False)   # flag
-reviews[&quot;text&quot;].str.extract(r&quot;after (\d+) (month|year)&quot;)  # → columns
+<span class="cmt"># same thing on a whole pandas column</span>
+reviews[&quot;text&quot;].str.contains(r&quot;\bloud\b&quot;, case=False)   <span class="cmt"># flag</span>
+reviews[&quot;text&quot;].str.extract(r&quot;after (\d+) (month|year)&quot;)  <span class="cmt"># → columns</span>
 </code></pre>
 <p class="small">⚠️ Always use raw strings, <code>r"…"</code>. ⚠️ With a capturing group, <code>findall</code> returns <strong>only the group</strong>.</p>
 <!-- ============================================================ GUIDED LAB -->
