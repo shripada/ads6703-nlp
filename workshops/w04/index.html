@@ -252,8 +252,8 @@ probably get <strong>wrong</strong>, and work out why: a <em>not</em>, a <em>but
 </div>
 </div>
 <h3>Worked example: six tiny reviews</h3>
-<p>Positive: <code>great fan</code> · <code>quiet and great</code> · <code>works well</code> &nbsp; Negative: <code>noisy fan</code> · <code>broke and noisy</code> · <code>fan broke</code></p>
-<p>P(pos) = P(neg) = 3/6. Both piles have 7 words; V = 8, so every add-one fraction has 7 + 8 = 15 at the bottom.</p>
+<p>Positive: <code>great fan</code> · <code>quiet and great</code> · <code>works well</code> · <code>works great</code> &nbsp; Negative: <code>noisy fan</code> · <code>broke and noisy</code></p>
+<p>P(pos) = 4/6, P(neg) = 2/6. The positive pile has 9 words, the negative pile 5; V = 8, so add-one fractions have 9 + 8 = 17 (positive) or 5 + 8 = 13 (negative) at the bottom.</p>
 <div class="table-wrap">
 <table>
 <thead>
@@ -268,30 +268,30 @@ probably get <strong>wrong</strong>, and work out why: a <em>not</em>, a <em>but
 <tbody>
 <tr>
 <td>great</td>
-<td>2</td>
+<td>3</td>
 <td>0</td>
-<td>3/15</td>
-<td>1/15</td>
+<td>4/17</td>
+<td>1/13</td>
 </tr>
 <tr>
 <td>fan</td>
 <td>1</td>
-<td>2</td>
-<td>2/15</td>
-<td>3/15</td>
+<td>1</td>
+<td>2/17</td>
+<td>2/13</td>
 </tr>
 <tr>
 <td>noisy</td>
 <td>0</td>
 <td>2</td>
-<td>1/15</td>
-<td>3/15</td>
+<td>1/17</td>
+<td>3/13</td>
 </tr>
 </tbody>
 </table>
 </div>
-<p><em>"great fan but noisy"</em>: skip <em>but</em> (never seen). Positive: ½ × 3/15 × 2/15 × 1/15; negative: ½ × 1/15 × 3/15 × 3/15.
-The tops are 6 and 9, so <strong>negative</strong>, with 9 ÷ 15 = <strong>60%</strong>.</p>
+<p><em>"great fan but noisy"</em>: skip <em>but</em> (never seen). Positive: 4/6 × 4/17 × 2/17 × 1/17 ≈ 0.00109; negative: 2/6 × 1/13 × 2/13 × 3/13 ≈ 0.00091.
+So <strong>positive</strong>, with 0.00109 ÷ (0.00109 + 0.00091) ≈ <strong>54%</strong>.</p>
 <h3>Python</h3>
 <div class="table-wrap">
 <table>
