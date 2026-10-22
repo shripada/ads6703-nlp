@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>W4 Sentiment · ADS 6703</title>
-<meta name="description" content="Workshop 4: Bayes&#39; theorem by counting, Naïve Bayes for sentiment analysis, add-one smoothing, and how to tell whether a classifier is any good.">
+<meta name="description" content="Workshop 4: Bayes&#39; theorem by counting, Naïve Bayes for sentiment analysis, and add-one smoothing.">
 <link rel="stylesheet" href="../../assets/css/site.css">
 <script>try { var t = localStorage.getItem("theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}</script>
 </head>
@@ -28,7 +28,7 @@
 <main>
   <p class="eyebrow">Workshop 4 · Sessions 10–12 · Thursday 22 October 2026</p>
   <h1>Good review or bad review? Bayes' theorem and Naïve Bayes, built by counting</h1>
-  <p class="lede">An app shouts "WOLF!" and is right 90% of the time. Should you run? The answer, about 8%, surprises almost everyone, and the reasoning behind it is Bayes' theorem. Today you learn it by counting, then use the same counting to read the feeling of a review, word by word, and test whether your classifier is any good.</p>
+  <p class="lede">An app shouts "WOLF!" and is right 90% of the time. Should you run? The answer, about 8%, surprises almost everyone, and the reasoning behind it is Bayes' theorem. Today you learn it by counting, then use the same counting to read the feeling of a review, word by word.</p>
 
   <div class="btn-row">
     <a class="btn" href="slides.html">Open slides</a>
@@ -42,7 +42,6 @@
     <li>explain why a rare thing stays unlikely even after a fairly accurate alarm</li>
     <li>explain the <strong>naïve</strong> assumption: each word is treated as a separate clue, so we can just multiply</li>
     <li>train a <strong>Naïve Bayes</strong> sentiment classifier by hand and in plain Python, with <strong>add-one smoothing</strong></li>
-    <li>judge a classifier with <strong>accuracy</strong>, a <strong>confusion table</strong>, <strong>precision</strong> and <strong>recall</strong>, against a do-nothing baseline</li>
   </ul>
   <p class="muted">Course outcome CO2 · Reading: [SLP] Appendix B</p>
 
@@ -51,7 +50,7 @@
 <h2 id="pre-read">Before class: pre-read</h2>
 <h3>1. Checklist</h3>
 <ul class="checklist">
-<li><code>git pull</code> run in your <code>ADS6703</code> folder, so the two Workshop 4 notebooks are in <code>ADS6703/w04/</code></li>
+<li><code>git pull</code> run in your <code>ADS6703</code> folder, so the Workshop 4 notebook is in <code>ADS6703/w04/</code></li>
 <li>The Workshop 3 <a href="../w03/practice.html">practice problems</a> tried</li>
 </ul>
 <h3>2. Where you already meet sentiment analysis</h3>
@@ -108,14 +107,12 @@ reviews, <em>broke</em> in negative ones. The classifier:</p>
 <strong>naïve</strong> part, and it works surprisingly well.</p>
 <p><strong>The zero problem, again.</strong> If <em>noisy</em> never appeared in a positive review, its number is 0, and one zero wipes out
 every other clue. The fix is the one from W3: <strong>add-one smoothing</strong>.</p>
-<p><strong>Is it any good?</strong> Test it on reviews it has never seen. If 6 of 10 test reviews are positive, a "classifier" that
-always says <em>positive</em> already scores 60%. Ours has to beat that, and actually catch the unhappy customers.</p>
 <h3>4. Read</h3>
 <ul>
 <li><strong>[SLP] Jurafsky &amp; Martin, <a href="https://web.stanford.edu/~jurafsky/slp3/">Appendix B</a></strong>, <em>Naive Bayes, Text
   Classification, and Sentiment</em>: the sections on the Naive Bayes classifier, training it (including Laplace, that is
-  add-one, smoothing), the worked example, and evaluation (precision, recall). Skip the parts on log probabilities
-  and on F-measure: we don't need them yet.</li>
+  add-one, smoothing), and the worked example. Skip the parts on log probabilities
+  and on evaluation: we don't need them yet.</li>
 </ul>
 <h3>5. Try (optional)</h3>
 <p>Pick a product you own and open its reviews on any shopping site. Find one review that a word-counting program would
@@ -126,10 +123,6 @@ probably get <strong>wrong</strong>, and work out why: a <em>not</em>, a <em>but
   <li><span class="t">2:10</span><span class="what">Bayes' theorem and Naïve Bayes, by hand</span><br><span class="muted">Count 1000 photos to get Bayes' theorem, give the four parts their names, then classify six tiny reviews by multiplying word clues, with add-one smoothing.</span></li>
   <li><span class="t">2:45</span><span class="what">Guided lab: W04-A</span><br><span class="muted">Count the words in 13 short reviews, turn them into clues, and build a function that says whether a new review is positive or negative.</span></li>
   <li><span class="t">3:20</span><span class="what">Recap</span></li>
-  <li class="break"><span class="t">3:25</span><span class="what">Break</span></li>
-  <li><span class="t">3:40</span><span class="what">Challenge lab: W04-B</span><br><span class="muted">Test the classifier on 10 new reviews: accuracy, a do-nothing baseline, the confusion table, precision and recall, and a look at its mistakes.</span></li>
-  <li><span class="t">4:30</span><span class="what">Class discussion</span><br><span class="muted">When is a sentiment classifier good enough to use, and what it gets wrong.</span></li>
-  <li><span class="t">4:45</span><span class="what">Short check</span><br><span class="muted">Five questions.</span></li>
 </ol>
 
 <h2 id="materials">Materials</h2>
@@ -140,14 +133,9 @@ probably get <strong>wrong</strong>, and work out why: a <em>not</em>, a <em>but
     <p class="muted">Press <kbd>F</kbd> for full screen and <kbd>Esc</kbd> for the overview.</p>
   </a>
   <a class="card" href="notebooks/W04-A-sentiment-classifier.ipynb" download>
-    <p class="kicker">Notebook · first half</p>
+    <p class="kicker">Notebook</p>
     <h3>W04-A · A sentiment classifier</h3>
     <p class="muted">Guided lab.</p>
-  </a>
-  <a class="card" href="notebooks/W04-B-is-it-any-good.ipynb" download>
-    <p class="kicker">Notebook · second half</p>
-    <h3>W04-B · Is the classifier any good?</h3>
-    <p class="muted">Challenge lab, on your own.</p>
   </a>
   <a class="card" href="practice.html">
     <p class="kicker">After class</p>
@@ -156,7 +144,7 @@ probably get <strong>wrong</strong>, and work out why: a <em>not</em>, a <em>but
   </a>
 </div>
 
-<p class="muted">The notebooks are already in <code>ADS6703/w04/</code> after <code>git pull</code>. The links above are for anyone who <a href="../../setup.html">downloaded the ZIP</a> instead: save them into <code>ADS6703/w04/</code>. This week's notebooks need no data files: the reviews are typed into the notebooks.</p>
+<p class="muted">The notebooks are already in <code>ADS6703/w04/</code> after <code>git pull</code>. The links above are for anyone who <a href="../../setup.html">downloaded the ZIP</a> instead: save them into <code>ADS6703/w04/</code>. This week's notebook needs no data files: the reviews are typed into the notebook.</p>
 
 <h2 id="handout">Handout: Bayes and Naïve Bayes cheat sheet</h2>
 <p class="muted">Print this page, or keep it open during the labs.</p>
@@ -219,33 +207,6 @@ probably get <strong>wrong</strong>, and work out why: a <em>not</em>, a <em>but
 <tr>
 <td>score</td>
 <td>prior × P(word₁ | label) × P(word₂ | label) × …</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="card">
-<h3>Is it any good?</h3>
-<table class="cheat">
-<tbody>
-<tr>
-<td>accuracy</td>
-<td>correct ÷ all</td>
-</tr>
-<tr>
-<td>baseline</td>
-<td>always say the most common label</td>
-</tr>
-<tr>
-<td>precision</td>
-<td>caught ÷ (caught + false alarms)</td>
-</tr>
-<tr>
-<td>recall</td>
-<td>caught ÷ (caught + missed)</td>
-</tr>
-<tr>
-<td>test reviews</td>
-<td>never used for counting</td>
 </tr>
 </tbody>
 </table>
