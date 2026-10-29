@@ -39,6 +39,8 @@ ADS6703/
 ├── w02/                   Workshop 2: From words to search
 ├── w03/                   Workshop 3: Guess the next word
 ├── w04/                   Workshop 4: Good review or bad review?
+├── lab-test/              Lab test: text pre-processing for analysis
+
 └── …                      more folders appear as the term goes on
 ```
 
