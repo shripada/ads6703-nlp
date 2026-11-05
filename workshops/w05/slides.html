@@ -684,9 +684,28 @@
 
 <section>
 <h2>tf for a few counts</h2>
-<p class="fragment">| count | 0 | 1 | 2 | 10 | 100 |
-|---|---|---|---|---|---|
-| tf | 0 | 1 | 1.30 | 2 | 3 |</p>
+<table class="fragment">
+<thead>
+<tr>
+<th>count</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>10</th>
+<th>100</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>tf</td>
+<td>0</td>
+<td>1</td>
+<td>1.30</td>
+<td>2</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
 <p class="fragment"><em>a pot of tea and a cup of tea</em>: <em>tea</em> appears 2 times, so tf = 1 + log₁₀ 2 = 1 + 0.30 = <strong>1.30</strong></p>
 <p class="fragment">On our menu every word appears at most once in an item, so every tf is 1 + log₁₀ 1 = <strong>1</strong></p>
 </section>
