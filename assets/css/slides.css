@@ -110,3 +110,8 @@ html, body, .reveal-viewport { background: #fff; }
 .reveal details > summary::-webkit-details-marker { display: none; }
 .reveal details[open] > summary { background: var(--accent); color: #fff; }
 .reveal details > :not(summary) { margin-top: 0.5em; border-left: 8px solid var(--accent); background: var(--accent-bg); border-radius: 0 8px 8px 0; padding: 0.4em 0.7em 0.4em 1.8em; }
+
+/* corner button that pops a reference table over the slide: ::: details Menu items {.peek} */
+.reveal details.peek { position: absolute; top: 0; right: 0; margin: 0; z-index: 30; font-size: 0.7em; text-align: right; }
+.reveal details.peek > :not(summary) { text-align: left; margin-top: 0.4em; padding: 0.4em 0.8em; font-size: 1.3em; border: 3px solid var(--accent); border-radius: 8px; background: #fff; box-shadow: 0 8px 28px rgba(0,0,0,0.25); }
+.reveal details.peek table { margin: 0; font-size: 1.15em; }
