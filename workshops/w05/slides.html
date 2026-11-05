@@ -323,6 +323,63 @@
 </section>
 
 <section>
+<h2>A longer item: <em>a cup of tea and a slice of cake</em></h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>a</th>
+<th>and</th>
+<th>cake</th>
+<th>cup</th>
+<th>of</th>
+<th>slice</th>
+<th>tea</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>a cup of tea</em></td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td><em>a cup of tea and a slice of cake</em></td>
+<td>2</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p class="fragment">Dot product: 1×2 + 0×1 + 0×1 + 1×1 + 1×2 + 0×1 + 1×1 = <strong>6</strong></p>
+<p class="fragment">6 beats <em>a cup of green tea</em>'s 4, only because this item is longer: <em>a</em> and <em>of</em> appear twice.</p>
+<aside class="notes">
+<p>This item is only for this example; it is not one of the four menu items used in the rest of the session.</p>
+</aside>
+</section>
+
+<section>
+<h2>Dividing by the lengths puts it back in place</h2>
+<p class="fragment">Lengths: √(1 + 0 + 0 + 1 + 1 + 0 + 1) = <strong>2</strong> and √(4 + 1 + 1 + 1 + 4 + 1 + 1) = √13 ≈ <strong>3.61</strong></p>
+<div class="box accent fragment">
+<p>\[ \cos = \frac{a \cdot b}{|a| \times |b|} = \frac{6}{2 \times 3.61} \approx \mathbf{0.83} \]</p>
+</div>
+<p class="fragment">0.83 is below <em>a cup of green tea</em>'s 0.89: the extra words no longer give it a lead.</p>
+<aside class="notes">
+<p>It is still a good match (it does contain tea), so it stays well above the coffee's 0.67. Cosine did not punish it, it only took away the advantage of being long.</p>
+</aside>
+</section>
+
+<section>
 <h2>Exercise: cosine with B and C</h2>
 <table>
 <thead>
