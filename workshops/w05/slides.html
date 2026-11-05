@@ -983,7 +983,10 @@ def to_tfidf(text):
 </tr>
 </tbody>
 </table>
-<p class="fragment">The same idea gives <em>"customers who liked this also liked…"</em>.</p>
+<p class="fragment">The query is now a menu item itself: compare it with every other item, show the closest few. That is a <em>"You may also like…"</em> box under a product.</p>
+<aside class="notes">
+<p>Same cosine as the search, only the query is replaced by the item being viewed. This uses only the words of the items; it does not know what other customers bought.</p>
+</aside>
 </section>
 
 <section>
