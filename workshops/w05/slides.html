@@ -671,6 +671,19 @@
 </section>
 
 <section>
+<h2>We need both numbers</h2>
+<p>Each word now has two numbers. Each one is only half the story.</p>
+<ul>
+<li class="fragment"><strong>The count</strong> says how much <em>this</em> text uses the word, but <em>a</em> and <em>of</em> get high counts too</li>
+<li class="fragment"><strong>The idf</strong> says how rare the word is, but it is the same for every text: it can't tell a text that says <em>tea</em> once from one that says it five times</li>
+<li class="fragment">So how do we combine them into one weight?</li>
+</ul>
+<aside class="notes">
+<p>A word should weigh a lot only when this text uses it AND it is rare across the texts. Let the class suggest adding or multiplying; multiplying means a 0 in either one gives 0, so "a" and "of" (idf 0) drop out completely.</p>
+</aside>
+</section>
+
+<section>
 <h2>TF-IDF weight</h2>
 <p>\[ \text{tf-idf} = \text{count of the word in the text} \times \text{idf}(\text{word}) \]</p>
 <p class="fragment"><strong>tf</strong>, the term frequency, is the count. <strong>idf</strong> is how rare the word is.</p>
