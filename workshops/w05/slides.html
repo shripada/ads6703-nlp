@@ -175,39 +175,6 @@
 </section>
 
 <section>
-<h2>Term frequency</h2>
-<p>The count of a word in a text is its <strong>term frequency</strong>, or <strong>tf</strong>.</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>a</th>
-<th>and</th>
-<th>cup</th>
-<th>of</th>
-<th>pot</th>
-<th>tea</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><em>a pot of tea and a cup of tea</em></td>
-<td>2</td>
-<td>1</td>
-<td>1</td>
-<td>2</td>
-<td>1</td>
-<td>2</td>
-</tr>
-</tbody>
-</table>
-<p class="fragment"><em>tea</em> has tf 2: this text uses it twice. A word not in the text has tf 0.</p>
-<aside class="notes">
-<p>In the short menu items every count happens to be 0 or 1, so this example uses a text with repeats. "Term" just means word here. tf is the plain count, not a ratio: some books divide by the number of words in the document, but cosine already divides by the lengths, so we don't need to.</p>
-</aside>
-</section>
-
-<section>
 <h2>A vector is an arrow</h2>
 <p>With only two words, <em>tea</em> and <em>coffee</em>, every text is a point on a grid, and an arrow from the corner.</p>
 <p><svg viewBox="0 0 380 300" width="560" style="display:block;margin:0.2em auto;font-size:18px" role="img" aria-label="Four arrows from the origin: tea (1,0), tea tea (2,0), coffee (0,1), tea and coffee (1,1)">
@@ -704,6 +671,27 @@
 </section>
 
 <section>
+<h2>Term frequency</h2>
+<p>The <strong>term frequency</strong>, <strong>tf</strong>, says how many times a word appears in a document.</p>
+<p class="fragment">But a word used 100 times is not 100 times as important. So the count is shrunk with a log, as with idf:</p>
+<div class="box accent fragment">
+<p>\[ \text{tf} = \begin{cases} 1 + \log_{10}(\text{count}) &amp; \text{if the count is more than 0} \\ 0 &amp; \text{if the count is 0} \end{cases} \]</p>
+</div>
+<aside class="notes">
+<p>This is SLP Eq. 11.4. The "1 +" makes a word that appears once get tf 1 rather than log₁₀ 1 = 0. A count of 0 needs its own rule because log₁₀ 0 does not exist. "Term" just means word here.</p>
+</aside>
+</section>
+
+<section>
+<h2>tf for a few counts</h2>
+<p class="fragment">| count | 0 | 1 | 2 | 10 | 100 |
+|---|---|---|---|---|---|
+| tf | 0 | 1 | 1.30 | 2 | 3 |</p>
+<p class="fragment"><em>a pot of tea and a cup of tea</em>: <em>tea</em> appears 2 times, so tf = 1 + log₁₀ 2 = 1 + 0.30 = <strong>1.30</strong></p>
+<p class="fragment">On our menu every word appears at most once in an item, so every tf is 1 + log₁₀ 1 = <strong>1</strong></p>
+</section>
+
+<section>
 <h2>We need both numbers</h2>
 <p>Each word now has two numbers. Each one is only half the story.</p>
 <ul>
@@ -719,43 +707,123 @@
 <section>
 <h2>TF-IDF weight</h2>
 <p>\[ \text{tf-idf} = \text{tf}(\text{word}) \times \text{idf}(\text{word}) \]</p>
-<p class="fragment"><strong>tf</strong> is how often the word appears in this text. <strong>idf</strong> is how rare it is across the texts.</p>
+<p class="fragment"><strong>tf</strong> is how often the word appears in this text, shrunk with a log. <strong>idf</strong> is how rare it is across the texts.</p>
 <p class="fragment">A word weighs a lot when it is <strong>frequent in this text</strong> and <strong>rare across the texts</strong>.</p>
 </section>
 
 <section>
-<h2>The new vectors</h2>
+<h2>TF-IDF for the query <em>a cup of tea</em></h2>
+<p>N = 4 menu items. Each word appears once in the query, so each tf is 1.</p>
 <table>
 <thead>
 <tr>
-<th></th>
-<th>a</th>
-<th>cup</th>
-<th>of</th>
-<th>tea</th>
-<th>other words</th>
+<th>Word</th>
+<th>count</th>
+<th>tf</th>
+<th>df</th>
+<th>idf = log₁₀(4 ÷ df)</th>
+<th>tf × idf</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><em>a cup of tea</em></td>
-<td>0</td>
-<td>0.12</td>
-<td>0</td>
-<td>0.30</td>
-<td>0</td>
+<td>a</td>
+<td>1</td>
+<td>1</td>
+<td>4</td>
+<td>log₁₀ 1 = 0</td>
+<td>1 × 0 = <strong>0</strong></td>
 </tr>
 <tr>
-<td>C: <em>a glass of iced tea</em></td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0.30</td>
-<td>glass 0.60, iced 0.60</td>
+<td>cup</td>
+<td>1</td>
+<td>1</td>
+<td>3</td>
+<td>log₁₀ 1.33 = 0.12</td>
+<td>1 × 0.12 = <strong>0.12</strong></td>
+</tr>
+<tr>
+<td>of</td>
+<td>1</td>
+<td>1</td>
+<td>4</td>
+<td>log₁₀ 1 = 0</td>
+<td>1 × 0 = <strong>0</strong></td>
+</tr>
+<tr>
+<td>tea</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td>log₁₀ 2 = 0.30</td>
+<td>1 × 0.30 = <strong>0.30</strong></td>
 </tr>
 </tbody>
 </table>
 <p class="fragment"><em>a</em> and <em>of</em> now weigh 0. <em>cup</em> weighs less than <em>tea</em>.</p>
+<aside class="notes">
+<p>df comes from the four menu items: a and of are in all four, cup is in A, B and D, tea is in A and C.</p>
+</aside>
+</section>
+
+<section>
+<h2>Exercise: TF-IDF for <em>a glass of iced tea</em></h2>
+<p>Work out tf × idf for each word of item C. <em>glass</em> and <em>iced</em> are each in one menu item.</p>
+<p class="small">log₁₀ 4 = 0.60 &nbsp; log₁₀ 2 = 0.30 &nbsp; log₁₀ 1 = 0</p>
+<div class="box accent fragment">
+<table>
+<thead>
+<tr>
+<th>Word</th>
+<th>tf</th>
+<th>df</th>
+<th>idf</th>
+<th>tf × idf</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a, of</td>
+<td>1</td>
+<td>4</td>
+<td>0</td>
+<td><strong>0</strong></td>
+</tr>
+<tr>
+<td>glass</td>
+<td>1</td>
+<td>1</td>
+<td>0.60</td>
+<td><strong>0.60</strong></td>
+</tr>
+<tr>
+<td>iced</td>
+<td>1</td>
+<td>1</td>
+<td>0.60</td>
+<td><strong>0.60</strong></td>
+</tr>
+<tr>
+<td>tea</td>
+<td>1</td>
+<td>2</td>
+<td>0.30</td>
+<td><strong>0.30</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<section>
+<h2>Exercise: a word used more than once</h2>
+<p>A long menu description uses <em>tea</em> 10 times and <em>cup</em> once. Use the menu's idf: tea 0.30, cup 0.12.</p>
+<p class="small">log₁₀ 10 = 1 &nbsp; log₁₀ 1 = 0</p>
+<div class="box accent fragment">
+<p>tea: tf = 1 + log₁₀ 10 = 1 + 1 = 2, so tf × idf = 2 × 0.30 = <strong>0.60</strong></p>
+<p>cup: tf = 1 + log₁₀ 1 = 1 + 0 = 1, so tf × idf = 1 × 0.12 = <strong>0.12</strong></p>
+</div>
+<p class="fragment">10 times the count, but only 2 times the tf.</p>
 </section>
 
 <section>
@@ -817,7 +885,7 @@
 </table>
 <p class="fragment">The scores are smaller, but only the order matters.</p>
 <aside class="notes">
-<p>B and D still get 0.05, from "cup". SLP also uses a log for tf, 1 + log₁₀(count); with counts of 1 it gives the same weights, so we keep tf as the plain count.</p>
+<p>B and D still get 0.05, from "cup". Every tf here is 1, so each weight is just the idf.</p>
 </aside>
 </section>
 
@@ -835,9 +903,11 @@ def cosine(a, b):
 
 <span class="cmt"># 3. idf: log10(N ÷ df), and the TF-IDF vector</span>
 idf = {w: math.log10(N / df[w]) for w in vocab}
+def tf(count):
+    return 1 + math.log10(count) if count &gt; 0 else 0
 def to_tfidf(text):
     counts = Counter(text.split())
-    return [counts[w] * idf[w] for w in vocab]   <span class="cmt"># count × idf</span>
+    return [tf(counts[w]) * idf[w] for w in vocab]   <span class="cmt"># tf × idf</span>
 </code></pre>
 <aside class="notes">
 <p>The lab writes each of these step by step, with plain loops instead of the one-line versions shown here.</p>
@@ -869,7 +939,7 @@ def to_tfidf(text):
 <li>A text becomes a <strong>vector</strong>: one count per word of the vocabulary</li>
 <li class="fragment"><strong>Cosine similarity</strong>: dot product ÷ (length × length); 1 = same direction, 0 = nothing shared</li>
 <li class="fragment">With counts, <em>a cup of black coffee</em> ties with a tea, because of <em>a</em>, <em>cup</em> and <em>of</em></li>
-<li class="fragment"><strong>TF-IDF</strong> = count × log₁₀(N ÷ df): the teas come first</li>
+<li class="fragment"><strong>TF-IDF</strong> = tf × idf, with tf = 1 + log₁₀(count) and idf = log₁₀(N ÷ df): the teas come first</li>
 </ul>
 </section>
 

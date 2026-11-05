@@ -72,14 +72,17 @@ root of the sum of the squares. 1 means the same direction, 0 means no shared wo
 <p><strong>TF-IDF: rare words count for more.</strong> Search a menu for <em>"a cup of tea"</em> by counting shared words, and <em>a cup of black
 coffee</em> scores high, because it shares <em>a</em>, <em>cup</em> and <em>of</em>. Those words are on almost every item, so they tell you
 nothing. TF-IDF gives every word a weight:</p>
-<p>\[ \text{tf-idf} = \text{count in the text} \times \log_{10} \frac{N}{\text{df}} \]</p>
-<p>N is the number of texts, and <strong>df</strong> (document frequency) is how many of them contain the word. A word in every text
-gets weight 0; a rare word gets a big weight.</p>
+<p>\[ \text{tf-idf} = \text{tf} \times \log_{10} \frac{N}{\text{df}} \]</p>
+<p><strong>tf</strong> (term frequency) is how often the word appears in the text, shrunk with a log: 1 + log₁₀(count), or 0 if the
+word is not there. N is the number of texts, and <strong>df</strong> (document frequency) is how many of them contain the word. A
+word in every text gets weight 0; a rare word gets a big weight.</p>
 <h3>4. Read</h3>
 <ul>
-<li><strong>[SLP] Jurafsky &amp; Martin, <a href="https://web.stanford.edu/~jurafsky/slp3/">Chapter 6</a></strong>, <em>Vector Semantics and
-  Embeddings</em>: sections 6.3 (words and vectors), 6.4 (cosine for measuring similarity) and 6.5 (TF-IDF). Skip the
-  rest of the chapter for now.</li>
+<li><strong>[SLP] Jurafsky &amp; Martin, <a href="https://web.stanford.edu/~jurafsky/slp3/">Chapter 5</a></strong>, <em>Embeddings</em>: sections 5.3
+  (simple count-based embeddings) and 5.4 (cosine for measuring similarity).</li>
+<li><strong>[SLP] <a href="https://web.stanford.edu/~jurafsky/slp3/">Chapter 11</a></strong>, <em>Information Retrieval and Retrieval-Augmented
+  Generation</em>: sections 11.1.1 to 11.1.3 (documents as vectors, tf-idf, scoring a document). Skip BM25 and the rest of
+  the chapter for now.</li>
 </ul>
 <h3>5. Try (optional)</h3>
 <p>Search for <em>"cheap phone case"</em> on any shopping site. Look at the first five results. Which words from your search do
@@ -148,7 +151,7 @@ they share, and is there a result that matches the meaning but uses different wo
 </tr>
 <tr>
 <td><strong>tf</strong></td>
-<td>how often the word appears in this text</td>
+<td>term frequency: how often the word appears in this text, shrunk with a log</td>
 </tr>
 <tr>
 <td><strong>df</strong></td>
@@ -174,12 +177,16 @@ they share, and is there a result that matches the meaning but uses different wo
 <td>cos(a, b) = a · b ÷ (|a| × |b|)</td>
 </tr>
 <tr>
+<td>tf</td>
+<td>1 + log₁₀(count), or 0 if the count is 0</td>
+</tr>
+<tr>
 <td>idf</td>
 <td>log₁₀(N ÷ df)</td>
 </tr>
 <tr>
 <td>tf-idf</td>
-<td>count × idf</td>
+<td>tf × idf</td>
 </tr>
 <tr>
 <td>log₁₀</td>
@@ -195,7 +202,8 @@ Query: <em>a cup of tea</em>.</p>
 <p><strong>With counts.</strong> The query has length √4 = 2; each item has 5 words, so length √5 ≈ 2.24. With only 0s and 1s, the dot
 product is the number of shared words: A 4, B 3, C 3, D 3. So A ≈ 0.89, and B, C, D are all ≈ 0.67: the coffee ties
 with the iced tea.</p>
-<p><strong>With TF-IDF.</strong> N = 4. <em>a</em>, <em>of</em>: df 4, idf 0. <em>cup</em>: df 3, idf 0.12. <em>tea</em>: df 2, idf 0.30. Every other word: df 1,
+<p><strong>With TF-IDF.</strong> Every word appears once in an item, so every tf is 1 + log₁₀ 1 = 1 and each weight is just the
+idf. N = 4. <em>a</em>, <em>of</em>: df 4, idf 0. <em>cup</em>: df 3, idf 0.12. <em>tea</em>: df 2, idf 0.30. Every other word: df 1,
 idf 0.60.</p>
 <div class="table-wrap">
 <table>
@@ -264,6 +272,10 @@ idf 0.60.</p>
 <tr>
 <td><code>df.update(set(item.split()))</code></td>
 <td>add 1 to df for each different word of an item</td>
+</tr>
+<tr>
+<td><code>1 + math.log10(c) if c &gt; 0 else 0</code></td>
+<td>tf of a word with count c</td>
 </tr>
 <tr>
 <td><code>math.log10(N / df[w])</code></td>
