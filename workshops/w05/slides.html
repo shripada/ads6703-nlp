@@ -112,6 +112,19 @@
 <p class="fragment"><strong>The problem:</strong> the customer asked for tea, but the coffee (B) and the hot chocolate (D) score 3, as high as the iced tea (C). Counting shared words can't tell a tea from a coffee here.</p>
 <aside class="notes">
 <p>The problem is already visible: "a", "cup" and "of" count as much as "tea". We fix it in two steps: first a better way to compare (cosine), then better weights (TF-IDF).</p>
+</aside>
+</section>
+
+<section>
+<h2>Why turn a text into numbers?</h2>
+<p>Counting shared words treats every word the same: <em>a</em> counts as much as <em>tea</em>.</p>
+<ul>
+<li class="fragment">We want each word to carry <strong>its own number</strong>, so <em>tea</em> can count for more than <em>a</em></li>
+<li class="fragment">We want a score that is fair to short and long texts alike</li>
+<li class="fragment">Once a text is a list of numbers, a computer can compare two texts with simple arithmetic</li>
+</ul>
+<aside class="notes">
+<p>This is the plan for the rest of the session: first turn texts into numbers (vectors), then compare them fairly (cosine), then choose better numbers for each word (TF-IDF).</p>
 <!-- ============================================================ VECTORS -->
 </aside>
 </section>
