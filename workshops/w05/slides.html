@@ -602,13 +602,25 @@
 </table>
 <p class="fragment"><em>cardamom</em> would weigh 1,000 times as much as <em>tea</em>. One rare word would drown out every other word in the text.</p>
 <aside class="notes">
-<p>We want rare words to count more, but not a thousand times more. We need a way to shrink big numbers while keeping their order: that is what a log does.</p>
+<p>We want rare words to count more, but not a thousand times more.</p>
+</aside>
+</section>
+
+<section>
+<h2>How do we shrink the gap?</h2>
+<p class="big"><em>cardamom</em> 100,000, <em>tea</em> 100. Keep <em>cardamom</em> on top, but not by a mile. Any ideas?</p>
+<ul>
+<li class="fragment">Divide both by 1,000? 100 and 0.1: still 1,000 times apart.</li>
+<li class="fragment">Count the zeros? <strong>5</strong> and <strong>2</strong>: <em>cardamom</em> still wins, but only by a little.</li>
+</ul>
+<aside class="notes">
+<p>Let the class suggest ideas first. Dividing (or multiplying) by any number keeps the same ratio, so it can never close the gap. Counting zeros does: each extra zero only adds 1.</p>
 </aside>
 </section>
 
 <section>
 <h2>log₁₀: how many 10s?</h2>
-<p>log₁₀ x asks: <em>10 to the power of what gives x?</em></p>
+<p>Counting the zeros has a name: <strong>log₁₀</strong>. log₁₀ x asks: <em>10 to the power of what gives x?</em></p>
 <table>
 <thead>
 <tr>
