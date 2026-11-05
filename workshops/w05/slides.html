@@ -532,6 +532,81 @@
 </section>
 
 <section>
+<h2>Rare words should weigh more</h2>
+<p>N = how many items there are. Here N = 4. Divide N by the df:</p>
+<table>
+<thead>
+<tr>
+<th>Word</th>
+<th>df</th>
+<th>N ÷ df</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a, of</td>
+<td>4</td>
+<td>4 ÷ 4 = <strong>1</strong></td>
+</tr>
+<tr>
+<td>cup</td>
+<td>3</td>
+<td>4 ÷ 3 = <strong>1.33</strong></td>
+</tr>
+<tr>
+<td>tea</td>
+<td>2</td>
+<td>4 ÷ 2 = <strong>2</strong></td>
+</tr>
+<tr>
+<td>green, coffee, …</td>
+<td>1</td>
+<td>4 ÷ 1 = <strong>4</strong></td>
+</tr>
+</tbody>
+</table>
+<p class="fragment">The rarer the word, the bigger N ÷ df.</p>
+<aside class="notes">
+<p>df goes the wrong way for a weight: small df means an important word. Dividing N by it flips it round, so rare words get the big numbers.</p>
+</aside>
+</section>
+
+<section>
+<h2>With a million documents, N ÷ df gets huge</h2>
+<p>A real search engine might have N = 1,000,000 documents.</p>
+<table>
+<thead>
+<tr>
+<th>Word</th>
+<th>df</th>
+<th>N ÷ df</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>the</td>
+<td>1,000,000</td>
+<td>1</td>
+</tr>
+<tr>
+<td>tea</td>
+<td>10,000</td>
+<td>100</td>
+</tr>
+<tr>
+<td>matcha</td>
+<td>10</td>
+<td><strong>100,000</strong></td>
+</tr>
+</tbody>
+</table>
+<p class="fragment"><em>matcha</em> would weigh 1,000 times as much as <em>tea</em>. One rare word would drown out every other word in the text.</p>
+<aside class="notes">
+<p>We want rare words to count more, but not a thousand times more. We need a way to shrink big numbers while keeping their order: that is what a log does.</p>
+</aside>
+</section>
+
+<section>
 <h2>log₁₀: how many 10s?</h2>
 <p>log₁₀ x asks: <em>10 to the power of what gives x?</em></p>
 <table>
@@ -543,7 +618,7 @@
 <th>4</th>
 <th>10</th>
 <th>100</th>
-<th>1000</th>
+<th>100,000</th>
 </tr>
 </thead>
 <tbody>
@@ -554,11 +629,11 @@
 <td>0.60</td>
 <td>1</td>
 <td>2</td>
-<td>3</td>
+<td>5</td>
 </tr>
 </tbody>
 </table>
-<p class="fragment">It grows slowly: a word in 1 of 1000 items gets 3, not 1000.</p>
+<p class="fragment">It shrinks big numbers but keeps their order: <em>tea</em>'s 100 becomes 2, <em>matcha</em>'s 100,000 becomes 5.</p>
 <aside class="notes">
 <p>Calculators and Python (math.log10) give the values. In the exam the log values are given in the question.</p>
 </aside>
@@ -567,7 +642,7 @@
 <section>
 <h2>Inverse document frequency</h2>
 <p>\[ \text{idf}(\text{word}) = \log_{10} \frac{N}{\text{df}(\text{word})} \]</p>
-<p>N = how many items there are. Here N = 4.</p>
+<p>The log of N ÷ df. Back to the menu: N = 4.</p>
 <ul>
 <li class="fragment">A word in <strong>every</strong> item: log₁₀(4/4) = log₁₀ 1 = <strong>0</strong></li>
 <li class="fragment">A word in <strong>one</strong> item: log₁₀(4/1) = log₁₀ 4 = <strong>0.60</strong></li>
