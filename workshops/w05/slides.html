@@ -175,6 +175,39 @@
 </section>
 
 <section>
+<h2>Term frequency</h2>
+<p>The count of a word in a text is its <strong>term frequency</strong>, or <strong>tf</strong>.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>a</th>
+<th>and</th>
+<th>cup</th>
+<th>of</th>
+<th>pot</th>
+<th>tea</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>a pot of tea and a cup of tea</em></td>
+<td>2</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td>1</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<p class="fragment"><em>tea</em> has tf 2: this text uses it twice. A word not in the text has tf 0.</p>
+<aside class="notes">
+<p>In the short menu items every count happens to be 0 or 1, so this example uses a text with repeats. "Term" just means word here.</p>
+</aside>
+</section>
+
+<section>
 <h2>A vector is an arrow</h2>
 <p>With only two words, <em>tea</em> and <em>coffee</em>, every text is a point on a grid, and an arrow from the corner.</p>
 <p><svg viewBox="0 0 380 300" width="560" style="display:block;margin:0.2em auto;font-size:18px" role="img" aria-label="Four arrows from the origin: tea (1,0), tea tea (2,0), coffee (0,1), tea and coffee (1,1)">
@@ -674,7 +707,7 @@
 <h2>We need both numbers</h2>
 <p>Each word now has two numbers. Each one is only half the story.</p>
 <ul>
-<li class="fragment"><strong>The count</strong> says how much <em>this</em> text uses the word, but <em>a</em> and <em>of</em> get high counts too</li>
+<li class="fragment"><strong>The tf</strong> says how much <em>this</em> text uses the word, but <em>a</em> and <em>of</em> get high tf too</li>
 <li class="fragment"><strong>The idf</strong> says how rare the word is, but it is the same for every text: it can't tell a text that says <em>tea</em> once from one that says it five times</li>
 <li class="fragment">So how do we combine them into one weight?</li>
 </ul>
@@ -685,8 +718,8 @@
 
 <section>
 <h2>TF-IDF weight</h2>
-<p>\[ \text{tf-idf} = \text{count of the word in the text} \times \text{idf}(\text{word}) \]</p>
-<p class="fragment"><strong>tf</strong>, the term frequency, is the count. <strong>idf</strong> is how rare the word is.</p>
+<p>\[ \text{tf-idf} = \text{tf}(\text{word}) \times \text{idf}(\text{word}) \]</p>
+<p class="fragment"><strong>tf</strong> is how often the word appears in this text. <strong>idf</strong> is how rare it is across the texts.</p>
 <p class="fragment">A word weighs a lot when it is <strong>frequent in this text</strong> and <strong>rare across the texts</strong>.</p>
 </section>
 
