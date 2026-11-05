@@ -203,7 +203,7 @@
 </table>
 <p class="fragment"><em>tea</em> has tf 2: this text uses it twice. A word not in the text has tf 0.</p>
 <aside class="notes">
-<p>In the short menu items every count happens to be 0 or 1, so this example uses a text with repeats. "Term" just means word here.</p>
+<p>In the short menu items every count happens to be 0 or 1, so this example uses a text with repeats. "Term" just means word here. tf is the plain count, not a ratio: some books divide by the number of words in the document, but cosine already divides by the lengths, so we don't need to.</p>
 </aside>
 </section>
 
@@ -707,12 +707,12 @@
 <h2>We need both numbers</h2>
 <p>Each word now has two numbers. Each one is only half the story.</p>
 <ul>
-<li class="fragment"><strong>The tf</strong> says how much <em>this</em> text uses the word, but <em>a</em> and <em>of</em> get high tf too</li>
+<li class="fragment"><strong>The tf</strong> says how many times the word appears in <em>this</em> document, but <em>a</em> and <em>of</em> appear a lot too</li>
 <li class="fragment"><strong>The idf</strong> says how rare the word is, but it is the same for every text: it can't tell a text that says <em>tea</em> once from one that says it five times</li>
 <li class="fragment">So how do we combine them into one weight?</li>
 </ul>
 <aside class="notes">
-<p>A word should weigh a lot only when this text uses it AND it is rare across the texts. Let the class suggest adding or multiplying; multiplying means a 0 in either one gives 0, so "a" and "of" (idf 0) drop out completely.</p>
+<p>A word should weigh a lot only when it appears in this text AND it is rare across the texts. Let the class suggest adding or multiplying; multiplying means a 0 in either one gives 0, so "a" and "of" (idf 0) drop out completely.</p>
 </aside>
 </section>
 
