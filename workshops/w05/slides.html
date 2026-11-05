@@ -116,15 +116,15 @@
 </section>
 
 <section>
-<h2>Why turn a text into numbers?</h2>
-<p>Counting shared words treats every word the same: <em>a</em> counts as much as <em>tea</em>.</p>
+<h2>The problem with comparing words</h2>
+<p>Comparing words only asks, word by word: <em>shared or not?</em></p>
 <ul>
-<li class="fragment">We want each word to carry <strong>its own number</strong>, so <em>tea</em> can count for more than <em>a</em></li>
-<li class="fragment">We want a score that is fair to short and long texts alike</li>
-<li class="fragment">Once a text is a list of numbers, a computer can compare two texts with simple arithmetic</li>
+<li class="fragment">Every shared word scores 1, so <em>a</em> counts as much as <em>tea</em></li>
+<li class="fragment">A long item shares more words just by being long</li>
+<li class="fragment">The fix: give every word of a text <strong>a number</strong>, then compare the numbers</li>
 </ul>
 <aside class="notes">
-<p>This is the plan for the rest of the session: first turn texts into numbers (vectors), then compare them fairly (cosine), then choose better numbers for each word (TF-IDF).</p>
+<p>The first two bullets are the two problems; the third is the way out. This is the plan for the rest of the session: first turn texts into numbers (vectors), then compare them fairly (cosine), then choose better numbers for each word (TF-IDF).</p>
 <!-- ============================================================ VECTORS -->
 </aside>
 </section>
