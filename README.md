@@ -42,6 +42,8 @@ ADS6703/
 ├── w05/                   Workshop 5: Which item matches best?
 ├── lab-test/              Lab test: text pre-processing for analysis
 
+├── project-starter/       the mini project starter app: copy it out to your team's own repo
+
 └── …                      more folders appear as the term goes on
 ```
 

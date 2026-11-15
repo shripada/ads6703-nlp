@@ -1,0 +1,7 @@
+body { font-family: system-ui, sans-serif; margin: 0; background: #fafafa; color: #222; }
+main { max-width: 720px; margin: 0 auto; padding: 24px 16px; }
+section { margin-top: 32px; }
+form { display: flex; gap: 8px; align-items: flex-start; }
+textarea, input { flex: 1; font: inherit; padding: 8px; }
+button { font: inherit; padding: 8px 16px; }
+.error { color: #b00020; }
