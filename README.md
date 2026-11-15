@@ -40,6 +40,7 @@ ADS6703/
 ├── w03/                   Workshop 3: Guess the next word
 ├── w04/                   Workshop 4: Good review or bad review?
 ├── w05/                   Workshop 5: Which item matches best?
+├── w06/                   Workshop 6: Which words mean the same?
 ├── lab-test/              Lab test: text pre-processing for analysis
 
 ├── project-starter/       the mini project starter app: copy it out to your team's own repo
