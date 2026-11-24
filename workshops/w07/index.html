@@ -186,15 +186,15 @@ and one that looks like <em>"people like you also liked"</em>. Which one surpris
 </tr>
 <tr>
 <td>prediction</td>
-<td>(sim₁ × r₁ + sim₂ × r₂) ÷ (sim₁ + sim₂)</td>
+<td>add up cosine × rating for the closest neighbours, then ÷ the sum of their cosines</td>
 </tr>
 <tr>
 <td>user–user</td>
-<td>sims: customer rows; r: their ratings of the item</td>
+<td>cosine: how like you each customer is; rating: their rating of the item</td>
 </tr>
 <tr>
 <td>item–item</td>
-<td>sims: item columns; r: your ratings of those items</td>
+<td>cosine: how like the item each item you rated is; rating: your rating of it</td>
 </tr>
 <tr>
 <td>centre</td>
