@@ -31,20 +31,20 @@
 <li>Warm-up: which item to suggest next</li>
 <li>Content-based filtering: recommending from item descriptions</li>
 <li>Collaborative filtering: recommending from a table of customer ratings</li>
-<li>What goes wrong: opposite tastes that look alike, new items with no ratings, tables that are almost empty</li>
-<li>Both kinds tried on real products</li>
+<li>What goes wrong: A cosine similarity need not point out same liking, new items with no ratings, missing data</li>
+<li>We will explore both of the above methods in action</li>
 <li>Lab</li>
 </ul>
 <!-- ============================================================ WARM-UP -->
 </section>
 
 <section class="divider">
-<h2>Warm-up: which item to suggest next?</h2>
+<h2>Recommending an item in a Café App</h2>
 <p class="big">A café app has room to suggest one more item to a customer.</p>
 </section>
 
 <section>
-<h2>A customer, Asha, and what she has had</h2>
+<h2>A customer, Asha, and what she already had and rated</h2>
 <table>
 <thead>
 <tr>
@@ -74,7 +74,7 @@
 </section>
 
 <section>
-<h2>Two ways to choose</h2>
+<h2>Two ways to recommend</h2>
 <table>
 <thead>
 <tr>
@@ -93,7 +93,7 @@
 </tr>
 </tbody>
 </table>
-<p class="fragment">The first looks at <strong>what she already had</strong>. The second looks at <strong>what similar customers already had</strong>.</p>
+<p class="fragment">The first looks at <strong>what she already had</strong>. The second looks at <strong>what customers similar to her already had</strong>.</p>
 </section>
 
 <section>
@@ -102,6 +102,7 @@
 <li><strong>Content-based</strong>: recommend items whose descriptions are like the ones the customer loved</li>
 <li class="fragment"><strong>Collaborative filtering</strong>: recommend items that customers with the same taste rated highly</li>
 <li class="fragment"><em>Collaborative</em>: the customers help each other, without knowing it</li>
+<li class="fragment">Netflix, Amazon and Spotify all use both.</li>
 </ul>
 <aside class="notes">
 <p>Netflix, Amazon and Spotify all use both. The rest of the workshop builds each one by hand, then on real products.</p>
@@ -146,7 +147,7 @@
 </tr>
 </tbody>
 </table>
-<p class="fragment">Keep only the telling words: <em>coffee</em>, <em>tea</em>, <em>milk</em>, <em>cold</em>, <em>hot</em>, <em>sweet</em>.</p>
+<p class="fragment">Keep only the decisive words: <em>coffee</em>, <em>tea</em>, <em>milk</em>, <em>cold</em>, <em>hot</em>, <em>sweet</em>.</p>
 </section>
 
 <section>
@@ -211,14 +212,15 @@
 </tr>
 </tbody>
 </table>
-<p class="fragment">1 if the word is in the description, 0 if not. Each row is the item's <strong>profile</strong>.</p>
+<p class="fragment">1 if the word is in the description, 0 if not. Each row is the item's <strong>profile</strong>.
+{+} Note: Real systems use TF-IDF weights instead of 0 and 1</p>
 <aside class="notes">
 <p>Real systems use TF-IDF weights instead of 0 and 1, so rare, telling words count for more. The lab does that on real products.</p>
 </aside>
 </section>
 
 <section>
-<h2><em>iced latte</em> against <em>hot latte</em>: dot product</h2>
+<h2>compare <em>iced latte</em> with <em>hot latte</em>: dot product</h2>
 <table>
 <thead>
 <tr>
@@ -1074,6 +1076,18 @@
 </ul>
 <aside class="notes">
 <p>Matrix factorisation fills the whole table at once and copes better with blanks. The Google course covers it in the section we skipped. Today's methods, comparing rows or columns, are called neighbourhood methods.</p>
+</aside>
+</section>
+
+<section>
+<h2>Real shops learn their item vectors</h2>
+<ul>
+<li class="fragment"><strong>word2vec on sessions</strong>: each customer's session is a sentence, each item a word. Items picked together get close vectors (Airbnb, Spotify)</li>
+<li class="fragment"><strong>Two networks</strong>: one turns a customer into a vector, the other turns an item into a vector. Recommend the items closest to the customer (YouTube)</li>
+<li class="fragment">The comparison does not change: dot product or cosine, then the closest</li>
+</ul>
+<aside class="notes">
+<p>Airbnb trained skip-gram on the listings people clicked in one search (Grbovic and Cheng, 2018); item2vec does the same with shopping baskets (Barkan and Koenigstein, 2016). The two-network design is called a two-tower model (Covington, Adams and Sargin, 2016, for YouTube). With millions of items, the closest vectors are found by fast approximate search (FAISS, ScaNN), then a second model re-ranks the short list. For descriptions, BERT-style sentence vectors replace TF-IDF, so "iced coffee" and "cold coffee" come out close. A new item gets a vector from its text or image, which eases cold start.</p>
 <!-- ============================================================ GUIDED LAB -->
 </aside>
 </section>
