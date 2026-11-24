@@ -589,9 +589,37 @@
 
 <section>
 <h2>Fill the blank: Asha and the cake</h2>
-<p>Meera rated the cake <strong>3</strong>, Ravi rated it <strong>5</strong>. Closer customers count for more:</p>
-<p class="fragment big">top: 0.77 × 3 + 0.73 × 5 = 2.31 + 3.65 = <strong>5.96</strong></p>
-<p class="fragment big">bottom: 0.77 + 0.73 = <strong>1.50</strong></p>
+<p>Multiply each customer's cake rating by how like Asha they are:</p>
+<table>
+<thead>
+<tr>
+<th>Customer</th>
+<th>Cosine with Asha</th>
+<th>Cake rating</th>
+<th>Cosine × rating</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Meera</td>
+<td>0.77</td>
+<td>3</td>
+<td>0.77 × 3 = 2.31</td>
+</tr>
+<tr>
+<td>Ravi</td>
+<td>0.73</td>
+<td>5</td>
+<td>0.73 × 5 = 3.65</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>1.50</strong></td>
+<td></td>
+<td><strong>5.96</strong></td>
+</tr>
+</tbody>
+</table>
 <div class="box accent fragment">
 <p>Asha's cake: 5.96 ÷ 1.50 ≈ <strong>3.97</strong>, about 4</p>
 </div>
@@ -602,10 +630,38 @@
 
 <section>
 <h2>Exercise: Asha and the hot latte</h2>
-<p>Meera rated the hot latte <strong>4</strong>, Ravi rated it <strong>3</strong>. Use the same two cosines, 0.77 and 0.73.</p>
+<table>
+<thead>
+<tr>
+<th>Customer</th>
+<th>Cosine with Asha</th>
+<th>Hot latte rating</th>
+<th>Cosine × rating</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Meera</td>
+<td>0.77</td>
+<td>4</td>
+<td>?</td>
+</tr>
+<tr>
+<td>Ravi</td>
+<td>0.73</td>
+<td>3</td>
+<td>?</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>1.50</strong></td>
+<td></td>
+<td>?</td>
+</tr>
+</tbody>
+</table>
 <div class="box accent fragment">
-<p>top: 0.77 × 4 + 0.73 × 3 = 3.08 + 2.19 = 5.27</p>
-<p>bottom: 0.77 + 0.73 = 1.50</p>
+<p>0.77 × 4 = 3.08 and 0.73 × 3 = 2.19, total <strong>5.27</strong></p>
 <p>Asha's hot latte: 5.27 ÷ 1.50 ≈ <strong>3.51</strong></p>
 </div>
 </section>
@@ -766,12 +822,14 @@
 
 <section>
 <h2>Fill the blank again</h2>
+<p>Multiply Asha's rating of each item by how like the cake it is. Keep the two closest; masala chai (0.71) is left out.</p>
 <table>
 <thead>
 <tr>
-<th>Item like the cake</th>
-<th>Cosine</th>
+<th>Item</th>
+<th>Cosine with cake</th>
 <th>Asha's rating</th>
+<th>Cosine × rating</th>
 </tr>
 </thead>
 <tbody>
@@ -779,20 +837,22 @@
 <td>iced latte</td>
 <td>0.74</td>
 <td>5</td>
+<td>0.74 × 5 = 3.70</td>
 </tr>
 <tr>
 <td>cold coffee</td>
 <td>0.74</td>
 <td>5</td>
+<td>0.74 × 5 = 3.70</td>
 </tr>
 <tr>
-<td>masala chai</td>
-<td>0.71</td>
-<td>2</td>
+<td><strong>Total</strong></td>
+<td><strong>1.48</strong></td>
+<td></td>
+<td><strong>7.40</strong></td>
 </tr>
 </tbody>
 </table>
-<p class="fragment">Keep the two closest: top 0.74 × 5 + 0.74 × 5 = 7.40, bottom 0.74 + 0.74 = 1.48</p>
 <div class="box accent fragment">
 <p>Asha's cake: 7.40 ÷ 1.48 = <strong>5.00</strong></p>
 </div>
