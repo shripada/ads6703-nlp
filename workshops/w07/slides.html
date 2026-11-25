@@ -942,17 +942,17 @@
 <ul>
 <li class="fragment">Tom gave the iced latte <strong>1</strong>, a dislike, yet 1 × 5 adds <strong>+5</strong> to the dot product</li>
 <li class="fragment">We need liked = <strong>+</strong>, disliked = <strong>−</strong></li>
-<li class="fragment">A customer's usual rating is their <strong>average</strong>: above it is liked, below it is disliked</li>
+<li class="fragment">The fix, <strong>centring</strong>: subtract each customer's average rating from each of their ratings. Above their usual becomes <strong>+</strong>, below becomes <strong>−</strong></li>
 </ul>
 </section>
 
 <section>
-<h2>Subtract each customer's average</h2>
+<h2>Centring Asha and Tom</h2>
 <p class="fragment">Asha's average: (5 + 5 + 2) ÷ 3 = <strong>4</strong>, so her row becomes <strong>1, 1, ·, −2, ·</strong></p>
 <p class="fragment">Tom's average: (1 + 2 + 4 + 5 + 3) ÷ 5 = <strong>3</strong>, so his row becomes <strong>−2, −1, 1, 2, 0</strong></p>
 <p class="fragment">Asha's iced latte, <strong>+1</strong>: one star above her usual. Her chai, <strong>−2</strong>: two stars below. A blank, <strong>0</strong>: not rated, so neither above nor below.</p>
 <aside class="notes">
-<p>This is called centring. It also fixes generous and harsh raters: a customer who gives everything 4 or 5 and one who gives everything 2 or 3 can have the same taste.</p>
+<p>Centring also fixes generous and harsh raters: a customer who gives everything 4 or 5 and one who gives everything 2 or 3 can have the same taste.</p>
 </aside>
 </section>
 
